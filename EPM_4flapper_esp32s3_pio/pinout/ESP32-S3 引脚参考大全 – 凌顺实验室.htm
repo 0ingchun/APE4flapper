@@ -1,0 +1,2642 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+			<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<title>ESP32-S3 引脚参考大全 – 凌顺实验室</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="凌顺实验室 » Feed" href="https://lingshunlab.com/feed">
+<link rel="alternate" type="application/rss+xml" title="凌顺实验室 » 评论Feed" href="https://lingshunlab.com/comments/feed">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/lingshunlab.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.7.2"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/wp-emoji-release.min.js" type="text/javascript" defer="defer"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/style.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-theme-css" href="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/theme.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="dashicons-css" href="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/dashicons.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="everest-forms-general-css" href="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/everest-forms.css" type="text/css" media="all">
+<style id="md-style-inline-css" type="text/css">
+ 
+</style>
+<link rel="stylesheet" id="wp-pagenavi-css" href="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/pagenavi-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="ez-icomoon-css" href="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/style.min_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="ez-toc-css" href="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/screen.min.css" type="text/css" media="all">
+<style id="ez-toc-inline-css" type="text/css">
+div#ez-toc-container p.ez-toc-title {font-size: 120%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 95%;}div#ez-toc-container nav ul ul li ul li {font-size: 90%!important;}
+</style>
+<link rel="stylesheet" id="colormag_style-css" href="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="colormag-featured-image-popup-css-css" href="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/magnific-popup.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="colormag-fontawesome-css" href="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/font-awesome.min.css" type="text/css" media="all">
+<script type="text/javascript" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/jquery.min.js" id="jquery-core-js"></script>
+<script type="text/javascript" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/jquery-migrate.min.js" id="jquery-migrate-js"></script>
+<!--[if lte IE 8]>
+<script type='text/javascript' src='https://lingshunlab.com/wp-content/themes/colormag/js/html5shiv.min.js?ver=2.1.3' id='html5-js'></script>
+<![endif]-->
+<link rel="https://api.w.org/" href="https://lingshunlab.com/wp-json/"><link rel="alternate" type="application/json" href="https://lingshunlab.com/wp-json/wp/v2/posts/2112"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://lingshunlab.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://lingshunlab.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 5.7.2">
+<meta name="generator" content="Everest Forms 1.9.1">
+<link rel="canonical" href="https://lingshunlab.com/book/esp32/esp32-s3-pin-reference">
+<link rel="shortlink" href="https://lingshunlab.com/?p=2112">
+<link rel="alternate" type="application/json+oembed" href="https://lingshunlab.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flingshunlab.com%2Fbook%2Fesp32%2Fesp32-s3-pin-reference">
+<link rel="alternate" type="text/xml+oembed" href="https://lingshunlab.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flingshunlab.com%2Fbook%2Fesp32%2Fesp32-s3-pin-reference&amp;format=xml">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com/"><meta property="og:image" content="https://img.lingshunlab.com/esp32-s3-pin-rreference-cover-c.png"><meta property="og:title" content="ESP32-S3 引脚参考大全">
+<meta property="og:description" content="介绍了ESP32-S3的引脚和外设">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ESP32-S3 引脚参考大全">
+<meta name="twitter:description" content="介绍了ESP32-S3的引脚和外设"><meta name="twitter:image" content="https://img.lingshunlab.com/esp32-s3-pin-rreference-cover-c.png">			<meta name="keywords" content="esp32,s3,pin,reference">
+			<!-- Analytics by WP Statistics v13.2.5 - https://wp-statistics.com/ -->
+<link rel="icon" href="https://lingshunlab.com/wp-content/uploads/2022/07/time-logo-150x150.png" sizes="32x32">
+<link rel="icon" href="https://lingshunlab.com/wp-content/uploads/2022/07/time-logo.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://lingshunlab.com/wp-content/uploads/2022/07/time-logo.png">
+<meta name="msapplication-TileImage" content="https://lingshunlab.com/wp-content/uploads/2022/07/time-logo.png">
+<script async="" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/adsbygoogle.js" crossorigin="anonymous"></script><style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style></head>
+
+
+
+<body class="post-template-default single single-post postid-2112 single-format-standard wp-custom-logo wp-embed-responsive everest-forms-js right-sidebar box-layout">
+
+		<div id="page" class="hfeed site">
+				<a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+				<header id="masthead" class="site-header clearfix ">
+				<div id="header-text-nav-container" class="clearfix">
+		
+			<div class="news-bar">
+				<div class="inner-wrap clearfix">
+					
+		<div class="date-in-header">
+			星期六, 8月 19, 2023		</div>
+
+		
+		<div class="breaking-news">
+			<strong class="breaking-news-latest">Latest:</strong>
+
+			<ul class="newsticker" style="height: 20px; overflow: hidden;"><li style="margin-top: 0px;">
+						<a href="https://lingshunlab.com/book/esp32/esp32-use-pwm-control-led" title="ESP32 使用PWM控制板载的LED实现呼吸效果">
+							ESP32 使用PWM控制板载的LED实现呼吸效果						</a>
+					</li><li style="margin-top: 0px;">
+						<a href="https://lingshunlab.com/book/jetson-nano/hello-ai-jetson-nano-use-detectnet-locating-objects-in-notebook" title="《Hello AI》系列：Jetson Nano在Jupyterlab中使用DetectNet 定位物体(Python)">
+							《Hello AI》系列：Jetson Nano在Jupyterlab中使用DetectNet 定位物体(Python)						</a>
+					</li><li style="margin-top: 0px;">
+						<a href="https://lingshunlab.com/book/arduino/arduino-use-mcp2515-canbus" title="Arduino 使用MCP2515模块进行CANBUS通讯">
+							Arduino 使用MCP2515模块进行CANBUS通讯						</a>
+					</li><li style="margin-top: 0px;">
+						<a href="https://lingshunlab.com/ai/ai-online-matting-image" title="AI在线抠图">
+							AI在线抠图						</a>
+					</li><li style="margin-top: 0px;">
+						<a href="https://lingshunlab.com/book/esp32/esp32-converting-pwm-to-analog-voltage" title="ESP32 使用PWM转换电压（0-10V）模块">
+							ESP32 使用PWM转换电压（0-10V）模块						</a>
+					</li>
+									
+									
+									
+									
+									
+							</ul>
+		</div>
+
+						</div>
+			</div>
+
+			
+		<div class="inner-wrap">
+			<div id="header-text-nav-wrap" class="clearfix">
+
+				<div id="header-left-section">
+											<div id="header-logo-image">
+							<a href="https://lingshunlab.com/" class="custom-logo-link" rel="home"><img width="269" height="90" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/logo-1-s.png" class="custom-logo" alt="凌顺实验室"></a>						</div><!-- #header-logo-image -->
+						
+					<div id="header-text" class="screen-reader-text">
+													<h3 id="site-title">
+								<a href="https://lingshunlab.com/" title="凌顺实验室" rel="home">凌顺实验室</a>
+							</h3>
+						
+													<p id="site-description">
+								凌晨时分，顺便做个实验							</p><!-- #site-description -->
+											</div><!-- #header-text -->
+				</div><!-- #header-left-section -->
+
+				<div id="header-right-section">
+									</div><!-- #header-right-section -->
+
+			</div><!-- #header-text-nav-wrap -->
+		</div><!-- .inner-wrap -->
+
+		
+		<div id="site-navigation-sticky-wrapper" class="sticky-wrapper is-sticky" style="height: 47.4px;"><nav id="site-navigation" class="main-navigation clearfix" role="navigation" style="width: 1200px; position: fixed; top: 0px; z-index: 999;">
+			<div class="inner-wrap clearfix">
+				
+					<div class="home-icon">
+						<a href="https://lingshunlab.com/" title="凌顺实验室">
+							<i class="fa fa-home"></i>
+						</a>
+					</div>
+				
+									<div class="search-random-icons-container">
+						
+		<div class="random-post">
+							<a href="https://lingshunlab.com/book/arduino/arduino-use-mcp2515-canbus" title="View a random post">
+					<i class="fa fa-random"></i>
+				</a>
+					</div>
+
+									<div class="top-search-wrap">
+								<i class="fa fa-search search-top"></i>
+								<div class="search-form-top">
+									
+<form action="https://lingshunlab.com/" class="search-form searchform clearfix" method="get" role="search">
+
+	<div class="search-wrap">
+		<input type="search" class="s field" name="s" placeholder="Search">
+
+		<button class="search-icon" type="submit"></button>
+	</div>
+
+</form><!-- .searchform -->
+								</div>
+							</div>
+											</div>
+				
+				<p class="menu-toggle"></p>
+				<div class="menu-primary-container"><ul id="menu-primary" class="menunav-menu" aria-expanded="false"><li id="menu-item-1188" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1188"><a href="https://lingshunlab.com/category/book/arduino">Arduino</a></li>
+<li id="menu-item-1192" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1192"><a href="https://lingshunlab.com/category/book/raspberry-pi">Raspberry Pi</a></li>
+<li id="menu-item-1189" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1189"><a href="https://lingshunlab.com/category/book/esp32">ESP32</a></li>
+<li id="menu-item-1190" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1190"><a href="https://lingshunlab.com/category/book/jetson-nano">Jetson nano</a></li>
+<li id="menu-item-1191" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1191"><a href="https://lingshunlab.com/category/book/pi-pico">Raspberry Pi Pico</a></li>
+<li id="menu-item-1473" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1473"><a href="https://lingshunlab.com/category/book/rockpi">Rock Pi</a></li>
+<li id="menu-item-1770" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1770"><a href="https://lingshunlab.com/category/book/c51">51单片机</a></li>
+<li id="menu-item-1954" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1954"><a href="https://lingshunlab.com/category/book/docker">Docker</a></li>
+<li id="menu-item-1372" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1372"><a href="https://lingshunlab.com/category/program">编程</a>
+<ul class="sub-menu">
+	<li id="menu-item-1980" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1980"><a href="https://lingshunlab.com/category/book/processing">Processing</a></li>
+	<li id="menu-item-1373" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1373"><a href="https://lingshunlab.com/category/program/python">Python</a></li>
+</ul>
+</li>
+<li id="menu-item-1724" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1724"><a href="https://lingshunlab.com/category/3dprinter">3D打印机</a>
+<ul class="sub-menu">
+	<li id="menu-item-1725" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1725"><a href="https://lingshunlab.com/category/3dprinter/voron2">Voron2</a></li>
+</ul>
+</li>
+<li id="menu-item-2231" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2231"><a href="https://lingshunlab.com/category/ai">AI</a></li>
+</ul></div>
+			</div>
+		</nav></div>
+
+				</div><!-- #header-text-nav-container -->
+				</header><!-- #masthead -->
+				<div id="main" class="clearfix">
+				<div class="inner-wrap clearfix">
+			<div>
+		<div style="height:2em"></div>
+		<script async="" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/adsbygoogle.js" crossorigin="anonymous"></script>
+		<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5370940476348866" data-ad-slot="7569275666"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+		<div style="height:2em"></div>
+	</div>
+	<div id="primary">
+		<div id="content" class="clearfix">
+
+			
+<article id="post-2112" class="post-2112 post type-post status-publish format-standard has-post-thumbnail hentry category-esp32 category-book">
+	
+				<div class="featured-image">
+									<a href="https://img.lingshunlab.com/esp32-s3-pin-rreference-cover-c.png" class="image-popup"><img fifu-featured="1" width="650" height="366" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/esp32-s3-pin-rreference-cover-c.png" class="attachment-colormag-featured-image size-colormag-featured-image wp-post-image" alt="" title=""></a>
+								</div>
+			
+	<div class="article-content clearfix">
+
+		<div class="above-entry-meta"><span class="cat-links"><a href="https://lingshunlab.com/category/book/esp32" style="background:#a4c4be" rel="category tag">ESP32</a>&nbsp;<a href="https://lingshunlab.com/category/book" style="background:#d8a0c2" rel="category tag">指南</a>&nbsp;</span></div>
+		<header class="entry-header">
+			<h1 class="entry-title">
+				ESP32-S3 引脚参考大全			</h1>
+		</header>
+
+		<div class="below-entry-meta">
+			<span class="posted-on"><a href="https://lingshunlab.com/book/esp32/esp32-s3-pin-reference" title="上午6:13" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2023-04-05T06:13:23+08:00">2023年4月5日</time><time class="updated" datetime="2023-04-05T06:19:46+08:00">2023年4月5日</time></a></span>
+			<span class="byline">
+				<span class="author vcard">
+					<i class="fa fa-user"></i>
+					<a class="url fn n" href="https://lingshunlab.com/author/lingshun" title="lingshun">
+						lingshun					</a>
+				</span>
+			</span>
+
+			</div>
+		<div class="entry-content clearfix">
+			<div id="ez-toc-container" class="ez-toc-v2_0_32 counter-hierarchy counter-hyphen ez-toc-light-blue">
+<p class="ez-toc-title">目录</p>
+<label for="item" class="cssicon"><i class="ez-toc-glyphicon ez-toc-icon-toggle"></i></label><label for="item" class="cssiconcheckbox">1</label><input type="checkbox" id="item"><nav><ul class="ez-toc-list ez-toc-list-level-1"><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-1" href="#%E4%B8%8D%E5%BB%BA%E8%AE%AE%E4%BD%BF%E7%94%A8%E7%9A%84%E7%AE%A1%E8%84%9A%EF%BC%88GPIO%EF%BC%89" title="不建议使用的管脚（GPIO）">不建议使用的管脚（GPIO）</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-2" href="#%E5%8F%97%E9%99%90%E5%88%B6%E4%BD%BF%E7%94%A8%E7%9A%84%E7%AE%A1%E8%84%9A%EF%BC%88GPIO%EF%BC%89" title="受限制使用的管脚（GPIO）">受限制使用的管脚（GPIO）</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-3" href="#ESP32-S3_%E6%B2%A1%E6%9C%89DAC" title="ESP32-S3 没有DAC">ESP32-S3 没有DAC</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-4" href="#ESP32-S3_%E5%91%A8%E8%BE%B9%E8%AE%BE%E5%A4%87" title="ESP32-S3 周边设备">ESP32-S3 周边设备</a><ul class="ez-toc-list-level-3"><li class="ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-5" href="#45x_GPIOs" title="45x GPIOs">45x GPIOs</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-6" href="#4x_SPI" title="4x SPI">4x SPI</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-7" href="#3x_UART" title="3x UART">3x UART</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-8" href="#2x_I2C" title="2x I2C">2x I2C</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-9" href="#14x_Touch" title="14x Touch">14x Touch</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-10" href="#2x_I2S" title="2x I2S">2x I2S</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-11" href="#RMT" title="RMT">RMT</a><ul class="ez-toc-list-level-4"><li class="ez-toc-heading-level-4"><a class="ez-toc-link ez-toc-heading-12" href="#RMT%E5%BA%94%E7%94%A8%E5%8F%82%E8%80%83" title="RMT应用参考">RMT应用参考</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-13" href="#LED_PWM" title="LED PWM">LED PWM</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-14" href="#USB-OTG" title="USB-OTG">USB-OTG</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-15" href="#TWAI" title="TWAI">TWAI</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-16" href="#2x_12-bit_ADC" title="2x 12-bit ADC">2x 12-bit ADC</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-17" href="#1x_LCD_CAMERA" title="1x LCD_CAMERA">1x LCD_CAMERA</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-18" href="#SDMMC_%E4%B8%BB%E6%9C%BA%E6%8E%A7%E5%88%B6%E5%99%A8" title="SD/MMC 主机控制器">SD/MMC 主机控制器</a></li><li class="ez-toc-page-1 ez-toc-heading-level-3"><a class="ez-toc-link ez-toc-heading-19" href="#MCPWM" title="MCPWM">MCPWM</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-20" href="#%E5%A4%96%E8%AE%BE%E5%92%8C%E4%BC%A0%E6%84%9F%E5%99%A8%E7%AE%A1%E8%84%9A%E5%88%86%E9%85%8D%E6%80%BB%E7%BB%93%E8%A1%A8" title="外设和传感器管脚分配总结表">外设和传感器管脚分配总结表</a></li><li class="ez-toc-page-1 ez-toc-heading-level-2"><a class="ez-toc-link ez-toc-heading-21" href="#%E5%8F%82%E8%80%83" title="参考">参考</a></li></ul></nav></div>
+<p>ESP32 S3 引脚大全</p>
+<p><img src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/ESP32-S3_DevKitC-1_pinlayout.jpg" alt="ESP32-S3-Devkitc-引脚图"></p><div class="code-block code-block-3" style="margin: 8px 0; clear: both;">
+<div style="height:3em"></div>
+
+<script async="" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/adsbygoogle.js" crossorigin="anonymous"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5370940476348866" data-ad-slot="7569275666"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div style="height:3em"></div></div>
+
+<p><img src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/WX20230405-0550032x.png" alt="ESP32-S3-模组引脚图"></p>
+<h2><span class="ez-toc-section" id="%E4%B8%8D%E5%BB%BA%E8%AE%AE%E4%BD%BF%E7%94%A8%E7%9A%84%E7%AE%A1%E8%84%9A%EF%BC%88GPIO%EF%BC%89"></span>不建议使用的管脚（GPIO）<span class="ez-toc-section-end"></span></h2>
+<p>用于与封装内 flash/PSRAM 通讯，不建议作其他用途。</p>
+<table>
+<thead>
+<tr>
+<th>管脚</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPIO 26</td>
+<td>SPICS1</td>
+</tr>
+<tr>
+<td>GPIO 27</td>
+<td>SPIHD</td>
+</tr>
+<tr>
+<td>GPIO 28</td>
+<td>SPIWP</td>
+</tr>
+<tr>
+<td>GPIO 29</td>
+<td>SPICS0</td>
+</tr>
+<tr>
+<td>GPIO 30</td>
+<td>SPICLK</td>
+</tr>
+<tr>
+<td>GPIO 31</td>
+<td>SPIQ</td>
+</tr>
+<tr>
+<td>GPIO 32</td>
+<td>SPID</td>
+</tr>
+</tbody>
+</table>
+<h2><span class="ez-toc-section" id="%E5%8F%97%E9%99%90%E5%88%B6%E4%BD%BF%E7%94%A8%E7%9A%84%E7%AE%A1%E8%84%9A%EF%BC%88GPIO%EF%BC%89"></span>受限制使用的管脚（GPIO）<span class="ez-toc-section-end"></span></h2>
+<p>一般具有重要功能，按需求调整使用。</p>
+<table>
+<thead>
+<tr>
+<th>管脚</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPIO 0</td>
+<td>芯片启动模式</td>
+</tr>
+<tr>
+<td>GPIO 3</td>
+<td>JTAG 信号源</td>
+</tr>
+<tr>
+<td>GPIO 19</td>
+<td>UART 接口 – 通常用于调试功能。</td>
+</tr>
+<tr>
+<td>GPIO 20</td>
+<td>UART 接口 – 通常用于调试功能。</td>
+</tr>
+<tr>
+<td>GPIO 45</td>
+<td>VDD_SPI 电压</td>
+</tr>
+<tr>
+<td>GPIO 46</td>
+<td>芯片启动模式/ROM 代码日志打印</td>
+</tr>
+</tbody>
+</table>
+<p>ADC2 – 无限制，除非 Wi-Fi 一直保持连接。ADC2_CH(n) 模拟功能不能和 Wi-Fi 同时使用。</p>
+<h2><span class="ez-toc-section" id="ESP32-S3_%E6%B2%A1%E6%9C%89DAC"></span>ESP32-S3 没有DAC<span class="ez-toc-section-end"></span></h2>
+<p>在ESP32-S3中，没有DAC功能，这个需要注意。</p>
+<h2><span class="ez-toc-section" id="ESP32-S3_%E5%91%A8%E8%BE%B9%E8%AE%BE%E5%A4%87"></span>ESP32-S3 周边设备<span class="ez-toc-section-end"></span></h2>
+<h3><span class="ez-toc-section" id="45x_GPIOs"></span>45x GPIOs<span class="ez-toc-section-end"></span></h3>
+<p>以下列表是ESP32-S3所有引脚一览，其中包含45个GPIO引脚：</p>
+<table>
+<thead>
+<tr>
+<th>管脚</th>
+<th>管脚</th>
+<th>管脚</th>
+<th>供电 管脚  3-6</th>
+<th>管脚配置 7</th>
+<th>管脚功能 1,2</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>名称</td>
+<td>类型 1</td>
+<td>复位时</td>
+<td>复位后</td>
+<td>IO MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>LNA_IN</td>
+<td>模拟</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>VDD3P3</td>
+<td>电源</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>VDD3P3</td>
+<td>电源</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>CHIP_PU</td>
+<td>模拟</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>GPIO0</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td>IE,  WPU</td>
+<td>IE,  WPU</td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>GPIO1</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td>IE</td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>7</td>
+<td>GPIO2</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td>IE</td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>8</td>
+<td>GPIO3</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td>IE</td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>9</td>
+<td>GPIO4</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td></td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>10</td>
+<td>GPIO5</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td></td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>11</td>
+<td>GPIO6</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td></td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>12</td>
+<td>GPIO7</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td></td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>13</td>
+<td>GPIO8</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td></td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>14</td>
+<td>GPIO9</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>15</td>
+<td>GPIO10</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>16</td>
+<td>GPIO11</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>17</td>
+<td>GPIO12</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>18</td>
+<td>GPIO13</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>19</td>
+<td>GPIO14</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>20</td>
+<td>VDD3P3_RTC</td>
+<td>电源</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>21</td>
+<td>XTAL_32K_P</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td></td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>22</td>
+<td>XTAL_32K_N</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td></td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>23</td>
+<td>GPIO17</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>24</td>
+<td>GPIO18</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>25</td>
+<td>GPIO19</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td></td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>26</td>
+<td>GPIO20</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td></td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td>模拟</td>
+</tr>
+<tr>
+<td>27</td>
+<td>GPIO21</td>
+<td>IO</td>
+<td>VDD3P3_RTC</td>
+<td></td>
+<td></td>
+<td>IO  MUX</td>
+<td>RTC</td>
+<td></td>
+</tr>
+<tr>
+<td>28</td>
+<td>SPICS1</td>
+<td>IO</td>
+<td>VDD_SPI</td>
+<td>IE,  WPU</td>
+<td>IE,  WPU</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>29</td>
+<td>VDD_SPI</td>
+<td>电源</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>30</td>
+<td>SPIHD</td>
+<td>IO</td>
+<td>VDD_SPI</td>
+<td>IE,  WPU</td>
+<td>IE,  WPU</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>31</td>
+<td>SPIWP</td>
+<td>IO</td>
+<td>VDD_SPI</td>
+<td>IE,  WPU</td>
+<td>IE,  WPU</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>32</td>
+<td>SPICS0</td>
+<td>IO</td>
+<td>VDD_SPI</td>
+<td>IE,  WPU</td>
+<td>IE,  WPU</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>33</td>
+<td>SPICLK</td>
+<td>IO</td>
+<td>VDD_SPI</td>
+<td>IE,  WPU</td>
+<td>IE,  WPU</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>34</td>
+<td>SPIQ</td>
+<td>IO</td>
+<td>VDD_SPI</td>
+<td>IE,  WPU</td>
+<td>IE,  WPU</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>35</td>
+<td>SPID</td>
+<td>IO</td>
+<td>VDD_SPI</td>
+<td>IE,  WPU</td>
+<td>IE,  WPU</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>36</td>
+<td>SPICLK_N</td>
+<td>IO</td>
+<td>VDD_SPI  / VDD3P3_CPU</td>
+<td>IE</td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>37</td>
+<td>SPICLK_P</td>
+<td>IO</td>
+<td>VDD_SPI  / VDD3P3_CPU</td>
+<td>IE</td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>38</td>
+<td>GPIO33</td>
+<td>IO</td>
+<td>VDD_SPI  / VDD3P3_CPU</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>39</td>
+<td>GPIO34</td>
+<td>IO</td>
+<td>VDD_SPI  / VDD3P3_CPU</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>40</td>
+<td>GPIO35</td>
+<td>IO</td>
+<td>VDD_SPI  / VDD3P3_CPU</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>41</td>
+<td>GPIO36</td>
+<td>IO</td>
+<td>VDD_SPI  / VDD3P3_CPU</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>42</td>
+<td>GPIO37</td>
+<td>IO</td>
+<td>VDD_SPI  / VDD3P3_CPU</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>43</td>
+<td>GPIO38</td>
+<td>IO</td>
+<td>VDD3P3_CPU</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>44</td>
+<td>MTCK</td>
+<td>IO</td>
+<td>VDD3P3_CPU</td>
+<td></td>
+<td>IE  8</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>45</td>
+<td>MTDO</td>
+<td>IO</td>
+<td>VDD3P3_CPU</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>46</td>
+<td>VDD3P3_CPU</td>
+<td>电源</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>47</td>
+<td>MTDI</td>
+<td>IO</td>
+<td>VDD3P3_CPU</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>48</td>
+<td>MTMS</td>
+<td>IO</td>
+<td>VDD3P3_CPU</td>
+<td></td>
+<td>IE</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>49</td>
+<td>U0TXD</td>
+<td>IO</td>
+<td>VDD3P3_CPU</td>
+<td>IE,  WPU</td>
+<td>IE,  WPU</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>50</td>
+<td>U0RXD</td>
+<td>IO</td>
+<td>VDD3P3_CPU</td>
+<td>IE,  WPU</td>
+<td>IE,  WPU</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>51</td>
+<td>GPIO45</td>
+<td>IO</td>
+<td>VDD3P3_CPU</td>
+<td>IE,  WPD</td>
+<td>IE,  WPD</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>52</td>
+<td>GPIO46</td>
+<td>IO</td>
+<td>VDD3P3_CPU</td>
+<td>IE,  WPD</td>
+<td>IE,  WPD</td>
+<td>IO  MUX</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>53</td>
+<td>XTAL_N</td>
+<td>模拟</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>54</td>
+<td>XTAL_P</td>
+<td>模拟</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>55</td>
+<td>VDDA</td>
+<td>电源</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>56</td>
+<td>VDDA</td>
+<td>电源</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>57</td>
+<td>GND</td>
+<td>电源</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3><span class="ez-toc-section" id="4x_SPI"></span>4x SPI<span class="ez-toc-section-end"></span></h3>
+<p>ESP32-S3 具有以下 SPI 接口： </p>
+<ul>
+<li>SPI0，供 ESP32-S3 和加密 DMA (EDMA) 访问封装内或封装外 flash/PSRAM </li>
+<li>SPI1，供 CPU 访问封装内或封装外 flash/PSRAM </li>
+<li>SPI2，通用 SPI 控制器，具有单独的 DMA 通道 </li>
+<li>SPI3，通用 SPI 控制器，和部分外设共用一个 DMA 通道</li>
+</ul>
+<p>SPI0 和 SPI1 特性 </p>
+<ul>
+<li>支持单线、双线、四线、八线 SPI 模式 </li>
+<li>八线 SPI 模式支持单倍数据速率 (SDR) 和双倍数据速率 (DDR) </li>
+<li>时钟频率可配置，八线 SPI SDR/DDR 模式下最高可达 120 MHz </li>
+<li>数据传输以字节为单位</li>
+</ul>
+<p>SPI2 特性 </p>
+<ul>
+<li>
+<p>支持主机或从机模式 </p>
+</li>
+<li>
+<p>具有单独的 DMA 通道 </p>
+</li>
+<li>
+<p>支持单线、双线、四线、八线 SPI 模式 </p>
+</li>
+<li>
+<p>时钟极性 (CPOL) 和相位 (CPHA) 可配置 </p>
+</li>
+<li>
+<p>时钟频率可配置 • 数据传输以字节为单位 </p>
+</li>
+<li>
+<p>读写数据位序可配置：最高有效位 (MSB) 优先，或最低有效位 (LSB) 优先 </p>
+</li>
+<li>
+<p>主机模式 </p>
+<ul>
+<li>支持双线全双工通信，时钟频率最高可达 80 MHz </li>
+<li>八线 SPI 全双工模式仅支持单倍数据速率 (SDR) </li>
+<li>支持单线、双线、四线和八线半双工通信，时钟频率最高可达 80 MHz </li>
+<li>八线 SPI 半双工模式支持单倍数据速率（最高 80 MHz）和双倍数据速率（最高 40 MHz） </li>
+<li>支持 Moto6800/I8080/并行 RGB 接口 8 位 LCD 驱动 </li>
+<li>具有六个 SPI_CS 管脚，可与六个独立 SPI 从机相连 </li>
+<li>CS 建立和保持时间可配置 </li>
+</ul>
+</li>
+<li>
+<p>从机模式 </p>
+<ul>
+<li>支持双线全双工通信，时钟频率最高可达 60 MHz </li>
+<li>支持单线、双线和四线半双工通信，时钟频率最高可达 60 MHz </li>
+<li>八线 SPI 全双工和半双工模式仅支持单倍数据速率 (SDR) </li>
+</ul>
+</li>
+</ul>
+<p>SPI3 特性 </p>
+<ul>
+<li>
+<p>支持主机或从机模式 </p>
+</li>
+<li>
+<p>与 ADC 和 DAC 外设共用一个 DMA 通道 </p>
+</li>
+<li>
+<p>支持单线、双线、四线、八线 SPI 模式 </p>
+</li>
+<li>
+<p>八线 SPI 模式仅支持单倍数据速率 (SDR) </p>
+</li>
+<li>
+<p>时钟极性 (CPOL) 和相位 (CPHA) 可配置 </p>
+</li>
+<li>
+<p>时钟频率可配置 • 数据传输以字节为单位 </p>
+</li>
+<li>
+<p>读写数据位序可配置：最高有效位 (MSB) 优先，或最低有效位 (LSB) 优先 </p>
+</li>
+<li>
+<p>主机模式 </p>
+<ul>
+<li>支持双线全双工通信，时钟频率最高可达 80 MHz </li>
+<li>支持单线、双线和四线半双工通信，时钟频率最高可达 80 MHz</li>
+<li>支持 1 位 LCD 驱动 </li>
+<li>具有三个 SPI_CS 管脚，可与三个独立 SPI 从机相连 </li>
+<li>CS 建立和保持时间可配置 </li>
+</ul>
+</li>
+<li>
+<p>从机模式 – 支持双线全双工通信，时钟频率最高可达 60 MHz </p>
+</li>
+<li>
+<p>支持单线、双线和四线半双工通信，时钟频率最高可达 60 MHz</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>接口</th>
+<th>推荐 IO MUX 管脚</th>
+<th>通过 GPIO 交换矩阵连接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPI0/1</td>
+<td>见表 2-3 IO MUX 和 GPIO 管脚功能 说明 5c、5d –</td>
+<td>–</td>
+</tr>
+<tr>
+<td>SPI2</td>
+<td>见表 2-3 IO MUX 和 GPIO 管脚功能 说明 5e</td>
+<td>任意 IO 管脚</td>
+</tr>
+<tr>
+<td>SPI3</td>
+<td></td>
+<td>任意 IO 管脚</td>
+</tr>
+</tbody>
+</table>
+<p><img src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/WechatIMG302-c.png" alt="WechatIMG302-c"></p>
+<h3><span class="ez-toc-section" id="3x_UART"></span>3x UART<span class="ez-toc-section-end"></span></h3>
+<p>ESP32-S3 有三个 UART（通用异步收发器）控制器，即 UART0、UART1、UART2，支持异步通信（RS232 和 RS485）和 IrDA，通信速率可达到 5 Mbps。UART 控制器具有如下特性：</p>
+<ul>
+<li>支持三个可预分频的时钟源 </li>
+<li>可编程收发波特率 </li>
+<li>三个 UART 的发送 FIFO 以及接收 FIFO 共享 1024 x 8-bit RAM </li>
+<li>全双工异步通信 </li>
+<li>支持输入信号波特率自检功能 </li>
+<li>支持 5/6/7/8 位数据长度 </li>
+<li>支持 1/1.5/2/3 个停止位 </li>
+<li>支持奇偶校验位 </li>
+<li>支持 AT_CMD 特殊字符检测 </li>
+<li>支持 RS485 协议</li>
+<li>支持 IrDA 协议 </li>
+<li>支持 GDMA 高速数据通信 </li>
+<li>支持 UART 唤醒模式 </li>
+<li>支持软件流控和硬件流控</li>
+</ul>
+<p>每个UART都分配有默认的 GPIO，但是根据您的 ESP32 电路设计进行更改，这些引脚可能与嵌入式闪存、板载 PSRAM 或外围设备冲突。</p>
+<p>任何 GPIO 都可以用于使用 GPIO 矩阵的硬件 UART，因此为避免冲突，只需在构造时提供<code>tx</code>和 rx 引脚即可。</p>
+<p>下面是ESP32-S3 UART的默认引脚。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>UART0</th>
+<th>UART1</th>
+<th>UART2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发送（TX）</td>
+<td>IO43</td>
+<td>IO17 / 任意IO</td>
+<td>任意IO</td>
+</tr>
+<tr>
+<td>接收（RX）</td>
+<td>IO44</td>
+<td>IO18 / 任意IO</td>
+<td>任意IO</td>
+</tr>
+</tbody>
+</table>
+<h3><span class="ez-toc-section" id="2x_I2C"></span>2x I2C<span class="ez-toc-section-end"></span></h3>
+<p>ESP32-S3 有两个 I2C 总线接口，根据用户的配置，总线接口可以用作 I2C 主机或从机模式。I2C 接口支持： </p>
+<ul>
+<li>标准模式 (100 Kbit/s) </li>
+<li>快速模式 (400 Kbit/s) </li>
+<li>速度最高可达 800 Kbit/s，但受制于 SCL 和 SDA 上拉强度 </li>
+<li>7 位寻址模式和 10 位寻址模式 </li>
+<li>双地址（从机地址和从机寄存器地址）寻址模式</li>
+</ul>
+<p>用户可以通过 I2C 硬件提供的指令抽象层更方便地控制 I2C 接口。 </p>
+<p>详细信息请参考 《ESP32-S3 技术参考手册》 &gt; 章节 I2C 控制器。</p>
+<p>I2C总线分软件和硬件对象，硬件可以定义0和1，通过配置可以在任意引脚上实现I2C功能，以下是I2S默认引脚表：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>I2C(0)</th>
+<th>I2C(1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SCL</td>
+<td>IO0</td>
+<td>IO2</td>
+</tr>
+<tr>
+<td>SDA</td>
+<td>IO1</td>
+<td>IO3</td>
+</tr>
+</tbody>
+</table>
+<h3><span class="ez-toc-section" id="14x_Touch"></span>14x Touch<span class="ez-toc-section-end"></span></h3>
+<p>ESP32-S3 提供了多达 14 个电容式传感 GPIO，能够探测由手指或其他物品直接接触或接近而产生的电容差异。 
+这种设计具有低噪声和高灵敏度的特点，可以用于支持使用相对较小的触摸板。设计中也可以使用触摸板阵列 以探测更大区域或更多点。ESP32-S3 
+的触摸传感器同时还支持防水和数字滤波等功能来进一步提高传感器的 性能。 </p>
+<blockquote>
+<p>说明： ESP32-S3 触摸传感器目前尚无法通过射频抗扰度测试系统 (CS) 认证，应用场景有所限制。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>管脚</th>
+<th>RTC / 模拟</th>
+<th>RTC 功能</th>
+<th></th>
+<th></th>
+<th></th>
+<th>Analog 功能</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>IO 名称</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>RTC_GPIO0</td>
+<td>RTC_GPIO0</td>
+<td></td>
+<td></td>
+<td>sar_i2c_scl_0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>RTC_GPIO1</td>
+<td>RTC_GPIO1</td>
+<td></td>
+<td></td>
+<td>sar_i2c_sda_0</td>
+<td>TOUCH1</td>
+<td>ADC1_CH0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>RTC_GPIO2</td>
+<td>RTC_GPIO2</td>
+<td></td>
+<td></td>
+<td>sar_i2c_scl_1</td>
+<td>TOUCH2</td>
+<td>ADC1_CH1</td>
+</tr>
+<tr>
+<td>8</td>
+<td>RTC_GPIO3</td>
+<td>RTC_GPIO3</td>
+<td></td>
+<td></td>
+<td>sar_i2c_sda_1</td>
+<td>TOUCH3</td>
+<td>ADC1_CH2</td>
+</tr>
+<tr>
+<td>9</td>
+<td>RTC_GPIO4</td>
+<td>RTC_GPIO4</td>
+<td></td>
+<td></td>
+<td></td>
+<td>TOUCH4</td>
+<td>ADC1_CH3</td>
+</tr>
+<tr>
+<td>10</td>
+<td>RTC_GPIO5</td>
+<td>RTC_GPIO5</td>
+<td></td>
+<td></td>
+<td></td>
+<td>TOUCH5</td>
+<td>ADC1_CH4</td>
+</tr>
+<tr>
+<td>11</td>
+<td>RTC_GPIO6</td>
+<td>RTC_GPIO6</td>
+<td></td>
+<td></td>
+<td></td>
+<td>TOUCH6</td>
+<td>ADC1_CH5</td>
+</tr>
+<tr>
+<td>12</td>
+<td>RTC_GPIO7</td>
+<td>RTC_GPIO7</td>
+<td></td>
+<td></td>
+<td></td>
+<td>TOUCH7</td>
+<td>ADC1_CH6</td>
+</tr>
+<tr>
+<td>13</td>
+<td>RTC_GPIO8</td>
+<td>RTC_GPIO8</td>
+<td></td>
+<td></td>
+<td></td>
+<td>TOUCH8</td>
+<td>ADC1_CH7</td>
+</tr>
+<tr>
+<td>14</td>
+<td>RTC_GPIO9</td>
+<td>RTC_GPIO9</td>
+<td></td>
+<td></td>
+<td></td>
+<td>TOUCH9</td>
+<td>ADC1_CH8</td>
+</tr>
+<tr>
+<td>15</td>
+<td>RTC_GPIO10</td>
+<td>RTC_GPIO10</td>
+<td></td>
+<td></td>
+<td></td>
+<td>TOUCH10</td>
+<td>ADC1_CH9</td>
+</tr>
+<tr>
+<td>16</td>
+<td>RTC_GPIO11</td>
+<td>RTC_GPIO11</td>
+<td></td>
+<td></td>
+<td></td>
+<td>TOUCH11</td>
+<td>ADC2_CH0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>RTC_GPIO12</td>
+<td>RTC_GPIO12</td>
+<td></td>
+<td></td>
+<td></td>
+<td>TOUCH12</td>
+<td>ADC2_CH1</td>
+</tr>
+<tr>
+<td>18</td>
+<td>RTC_GPIO13</td>
+<td>RTC_GPIO13</td>
+<td></td>
+<td></td>
+<td></td>
+<td>TOUCH13</td>
+<td>ADC2_CH2</td>
+</tr>
+<tr>
+<td>19</td>
+<td>RTC_GPIO14</td>
+<td>RTC_GPIO14</td>
+<td></td>
+<td></td>
+<td></td>
+<td>TOUCH14</td>
+<td>ADC2_CH3</td>
+</tr>
+<tr>
+<td>21</td>
+<td>RTC_GPIO15</td>
+<td>RTC_GPIO15</td>
+<td></td>
+<td></td>
+<td></td>
+<td>XTAL_32K_P</td>
+<td>ADC2_CH4</td>
+</tr>
+<tr>
+<td>22</td>
+<td>RTC_GPIO16</td>
+<td>RTC_GPIO16</td>
+<td></td>
+<td></td>
+<td></td>
+<td>XTAL_32K_N</td>
+<td>ADC2_CH5</td>
+</tr>
+<tr>
+<td>23</td>
+<td>RTC_GPIO17</td>
+<td>RTC_GPIO17</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>ADC2_CH6</td>
+</tr>
+<tr>
+<td>24</td>
+<td>RTC_GPIO18</td>
+<td>RTC_GPIO18</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>ADC2_CH7</td>
+</tr>
+<tr>
+<td>25</td>
+<td>RTC_GPIO19</td>
+<td>RTC_GPIO19</td>
+<td></td>
+<td></td>
+<td></td>
+<td>USB_D-</td>
+<td>ADC2_CH8</td>
+</tr>
+<tr>
+<td>26</td>
+<td>RTC_GPIO20</td>
+<td>RTC_GPIO20</td>
+<td></td>
+<td></td>
+<td></td>
+<td>USB_D+</td>
+<td>ADC2_CH9</td>
+</tr>
+<tr>
+<td>27</td>
+<td>RTC_GPIO21</td>
+<td>RTC_GPIO21</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3><span class="ez-toc-section" id="2x_I2S"></span>2x I2S<span class="ez-toc-section-end"></span></h3>
+<p>ESP32-S3 有两个标准 I2S 接口，可以以主机或从机模式，在全双工或半双工模式下工作，并且可被配置为 I2S 串行 
+8/16/24/32 位的收发数据模式，支持频率从 10 kHz 到 40 MHz 的 BCK 时钟。 I2S 接口有专用的 DMA 
+控制器。支持 TDM PCM，TDM MSB 对齐，TDM LSB 对齐，TDM Phillips，PDM 接 口。</p>
+<p>任意IO口都可以配置为I2S</p>
+<h3><span class="ez-toc-section" id="RMT"></span>RMT<span class="ez-toc-section-end"></span></h3>
+<p>红外遥控 (RMT) 支持红外控制信号的发射和接收，具有以下特性： </p>
+<ul>
+<li>四个通道支持发送 </li>
+<li>四个通道支持接收 </li>
+<li>可编程配置多个通道同时发送 </li>
+<li>RMT 的八个通道共享 384 x 32-bit 的 RAM </li>
+<li>发送脉冲支持载波调制 </li>
+<li>接收脉冲支持滤波和载波解调 </li>
+<li>乒乓发送模式 </li>
+<li>乒乓接收模式 </li>
+<li>发射器支持持续发送 </li>
+<li>发送通道 3 支持 DMA 访问 </li>
+<li>接收通道 7 支持 DMA 访问</li>
+</ul>
+<h4><span class="ez-toc-section" id="RMT%E5%BA%94%E7%94%A8%E5%8F%82%E8%80%83"></span>RMT应用参考<span class="ez-toc-section-end"></span></h4>
+<p><a href="https://zhuanlan.zhihu.com/p/534758399">ESP32-C3入门教程 基础篇（五、RMT应用 — 控制SK6812全彩RGB 灯</a></p>
+<h3><span class="ez-toc-section" id="LED_PWM"></span>LED PWM<span class="ez-toc-section-end"></span></h3>
+<p>LED PWM 控制器可以用于生成八路独立的数字波形，具有如下特性： </p>
+<ul>
+<li>波形的周期和占空比可配置，在信号周期为 1 ms 时，占空比精确度可达 14 位 </li>
+<li>多种时钟源选择，包括：APB 总线时钟、外置主晶振时钟 </li>
+<li>可在 Light-sleep 模式下工作 </li>
+<li>支持硬件自动步进式地增加或减少占空比，可用于 LED RGB 彩色梯度发生器 </li>
+</ul>
+<p>详细信息请参考 《ESP32-S3 技术参考手册》 &gt; 章节 LED PWM 控制器。</p>
+<p>任意 GPIO 管脚都可以配置LED PWM，最多可配置八路独立通道。     </p>
+<h3><span class="ez-toc-section" id="USB-OTG"></span>USB-OTG<span class="ez-toc-section-end"></span></h3>
+<p>ESP32-S3 带有一个集成了收发器的 USB On-The-Go（下文将称为 OTG_FS）外设。该 OTG_FS 外设可配置成 
+主机模式 (Host mode) 或设备模式 (Device mode)，完全符合 USB 2.0 协议规范。它支持传输速率为 12 
+Mbit/s 的全速模式 (Full-Speed, FS) 和传输速率为 1.5 Mbit/s 的低速模式 (Low-Speed, 
+LS)，还支持主机协商协议 (Host Negotiation Protocol, HNP) 和会话请求协议 (Session Request 
+Protocol, SRP)。</p>
+<h3><span class="ez-toc-section" id="TWAI"></span>TWAI<span class="ez-toc-section-end"></span></h3>
+<p>双线车载串口 (Two-wire Automotive Interface, TWAI®) 
+协议是一种多主机、多播的通信协议，具有检测错误、发 送错误信号以及内置报文优先仲裁等功能。TWAI 协议适用于汽车和工业应用（可参见第 31.3
+ 章）。 ESP32-S3 包含一个 TWAI 控制器，可通过外部收发器连接到 TWAI 总线。TWAI 控制器包含一系列先进的功能， 
+用途广泛，可用于如汽车产品、工业自动化控制、楼宇自动化等。</p>
+<h3><span class="ez-toc-section" id="2x_12-bit_ADC"></span>2x 12-bit ADC<span class="ez-toc-section-end"></span></h3>
+<p>ESP32-S3 集成了两个 12 位 SAR ADC，共支持 20 个模拟通道输入。为了实现更低功耗，ESP32-S3 的 ULP 协 处理器也可以在睡眠方式下测量电压，此时，可通过设置阈值或其他触发方式唤醒 CPU。</p>
+<h3><span class="ez-toc-section" id="1x_LCD_CAMERA"></span>1x LCD_CAMERA<span class="ez-toc-section-end"></span></h3>
+<p>ESP32-S3 的 LCD_CAM 控制器包含独立的 LCD 模块和 Camera 模块。其中 LCD 模块用于发送并行视频数据 
+信号，其总线支持 RGB、MOTO6800 和 I8080 等接口时序。Camera 模块用于接收并行视频数据信号，其总线 支持 DVP 
+8-/16-bit 模式</p>
+<p>ESP32-S3 支持 8 位 ~16 位并行 RGB、I8080、MOTO6800 接口，支持的时钟频率小于 40 MHz。支持 RGB565、 YUV422、YUV420、YUV411 之间的互相转换。</p>
+<p>摄像头接口 ESP32-S3 支持 8 位 ~16 位 DVP 图像传感器接口，支持的时钟频率小于 40 MHz。支持 RGB565、YUV422、 YUV420、YUV411 之间的互相转换。</p>
+<h3><span class="ez-toc-section" id="SDMMC_%E4%B8%BB%E6%9C%BA%E6%8E%A7%E5%88%B6%E5%99%A8"></span>SD/MMC 主机控制器<span class="ez-toc-section-end"></span></h3>
+<p>ESP32-S3 集成一个 SD/MMC 主机控制器，支持以下特性： • SD 卡 3.0 和 3.01 版本 • SDIO 3.0 版本
+ • CE-ATA 1.1 版本 • 多媒体卡（MMC 4.41 版本、eMMC 4.5 版本和 4.51 版本） • 高达 80 MHz 
+的时钟输出 • 3 种数据总线模式： – 1 位 – 4 位（可支持两个 SD/SDIO/MMC 4.41 卡，以及一个以 1.8 V 
+电压工作的 SD 卡） – 8 位 详细信息请参考 《ESP32-S3 技术参考手册》 &gt; 章节 SD/MMC 主机控制器。</p>
+<h3><span class="ez-toc-section" id="MCPWM"></span>MCPWM<span class="ez-toc-section-end"></span></h3>
+<p>电机控制脉宽调制器 (MCPWM) ESP32-S3 包含两个 MCPWM，可以用于驱动数字马达和智能灯。每个 MCPWM 
+外设都包含一个时钟分频器（预 分频器）、三个 PWM 定时器、三个 PWM 操作器和一个捕捉模块。PWM 定时器用于生成定时参考。PWM 操作 
+器将根据定时参考生成所需的波形。通过配置，任一 PWM 操作器可以使用任一 PWM 定时器的定时参考。不同 的 PWM 操作器可以使用相同的 
+PWM 定时器的定时参考来产生 PWM 信号。此外，不同的 PWM 操作器也可以 使用不同的 PWM 定时器的值来生成单独的 PWM 
+信号。不同的 PWM 定时器也可进行同步。 详细信息请参考 《ESP32-S3 技术参考手册》 &gt; 章节 电机控制脉宽调制器。</p>
+<h2><span class="ez-toc-section" id="%E5%A4%96%E8%AE%BE%E5%92%8C%E4%BC%A0%E6%84%9F%E5%99%A8%E7%AE%A1%E8%84%9A%E5%88%86%E9%85%8D%E6%80%BB%E7%BB%93%E8%A1%A8"></span>外设和传感器管脚分配总结表<span class="ez-toc-section-end"></span></h2>
+<table cellspacing="0" border="0">
+<colgroup width="107"></colgroup>
+<colgroup width="122"></colgroup>
+<colgroup width="145"></colgroup>
+<colgroup width="296"></colgroup>
+<tbody><tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">接口</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">信号</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">管脚</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">功能</font></b></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="20" height="427" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC1_CH0</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO1</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="20" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">两个 12 位 SAR ADC</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC1_CH1</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO2</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC1_CH2</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO3</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC1_CH3</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO4</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC1_CH4</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO5</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC1_CH5</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO6</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC1_CH6</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO7</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC1_CH7</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO8</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC1_CH8</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO9</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC1_CH9</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO10</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC2_CH0</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO11</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC2_CH1</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO12</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC2_CH2</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO13</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC2_CH3</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO14</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC2_CH4</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">XTAL_32K_P</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC2_CH5</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">XTAL_32K_N</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC2_CH6</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO17</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC2_CH7</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO18</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC2_CH8</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO19</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">ADC2_CH9</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFE699"><font face="Tahoma" size="2" color="#000000">GPIO20</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">接口</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">信号</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">管脚</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">功能</font></b></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="14" height="299" align="left" valign="middle" bgcolor="#BDD7EE"><font face="DejaVu Sans" size="2" color="#000000">触摸传感器</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">TOUCH1</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">GPIO1</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="14" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">电容式触摸传感器</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">TOUCH2</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">GPIO2</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">TOUCH3</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">GPIO3</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">TOUCH4</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">GPIO4</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">TOUCH5</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">GPIO5</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">TOUCH6</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">GPIO6</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">TOUCH7</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">GPIO7</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">TOUCH8</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">GPIO8</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">TOUCH9</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">GPIO9</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">TOUCH10</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">GPIO10</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">TOUCH11</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">GPIO11</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">TOUCH12</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">GPIO12</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">TOUCH13</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">GPIO13</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">TOUCH14</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BDD7EE"><font face="Tahoma" size="2" color="#000000">GPIO14</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="4" height="85" align="left" valign="middle" bgcolor="#C5E0B4"><font face="Tahoma" size="2" color="#000000">JTAG</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#C5E0B4"><font face="Tahoma" size="2" color="#000000">MTDI</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#C5E0B4"><font face="Tahoma" size="2" color="#000000">MTDI</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="4" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">软件调试 JTAG</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#C5E0B4"><font face="Tahoma" size="2" color="#000000">MTCK</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#C5E0B4"><font face="Tahoma" size="2" color="#000000">MTCK</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#C5E0B4"><font face="Tahoma" size="2" color="#000000">MTMS</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#C5E0B4"><font face="Tahoma" size="2" color="#000000">MTMS</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#C5E0B4"><font face="Tahoma" size="2" color="#000000">MTDO</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#C5E0B4"><font face="Tahoma" size="2" color="#000000">MTDO</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="18" height="384" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">UART</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U0RXD_in</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="18" align="left" valign="middle" bgcolor="#F8CBAD"><font face="DejaVu Sans" size="2" color="#000000">任意 GPIO 管脚</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="18" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">三个 UART 设备，支持硬 件流控制和 DMA</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U0CTS_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U0DSR_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U0TXD_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U0RTS_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U0DTR_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U1RXD_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U1CTS_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U1DSR_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U1TXD_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U1RTS_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U1DTR_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U2RXD_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U2CTS_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U2DSR_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U2TXD_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U2RTS_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F8CBAD"><font face="Tahoma" size="2" color="#000000">U2DTR_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="4" height="149" align="left" valign="middle" bgcolor="#A2CA71"><font face="Tahoma" size="2" color="#000000">I2C</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#A2CA71"><font face="Tahoma" size="2" color="#000000">I2CEXT0_SCL_in/_out</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="4" align="left" valign="middle" bgcolor="#A2CA71"><font face="DejaVu Sans" size="2" color="#000000">任意 GPIO 管脚</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="4" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">两个 I2C 设备，支持主机 或从机模式</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#A2CA71"><font face="Tahoma" size="2" color="#000000">I2CEXT0_SDA_in/_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#A2CA71"><font face="Tahoma" size="2" color="#000000">I2CEXT1_SCL_in/_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#A2CA71"><font face="Tahoma" size="2" color="#000000">I2CEXT1_SDA_in/_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="40" align="left" valign="middle" bgcolor="#65FFFF"><font face="Tahoma" size="2" color="#000000">LED PWM</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#65FFFF"><font face="Tahoma" size="2" color="#000000">LEDC_LS_SIG_out0~7</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#65FFFF"><font face="DejaVu Sans" size="2" color="#000000">任意 GPIO 管脚</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">八路独立通道</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">接口</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">信号</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">管脚</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">功能</font></b></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="28" height="869" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0O_BCK_in</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="28" align="left" valign="middle" bgcolor="#FACDE3"><font face="DejaVu Sans" size="2" color="#000000">任意 GPIO 管脚</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="28" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">用于串行立体声数据的输 入输出。</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0_MCLK_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0O_WS_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0I_SD_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0I_SD1_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0I_SD2_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0I_SD3_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0I_BCK_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0I_WS_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S1O_BCK_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S1_MCLK_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S1O_WS_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S1I_SD_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S1I_BCK_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S1I_WS_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0O_BCK_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0_MCLK_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0O_WS_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0O_SD_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0O_SD1_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0I_BCK_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S0I_WS_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S1O_BCK_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S1_MCLK_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S1O_WS_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S1O_SD_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S1I_BCK_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FACDE3"><font face="Tahoma" size="2" color="#000000">I2S1I_WS_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="13" height="432" align="left" valign="middle" bgcolor="#F1DDFF"><font face="Tahoma" size="2" color="#000000">LCD_CAMERA</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F1DDFF"><font face="Tahoma" size="2" color="#000000">LCD_PCLK</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="13" align="left" valign="middle" bgcolor="#F1DDFF"><font face="DejaVu Sans" size="2" color="#000000">任意 GPIO 管脚</font></td>
+<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">用于发送 8 ~16 位 LCD</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F1DDFF"><font face="Tahoma" size="2" color="#000000">LCD_DC</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">接口数据的发送和 8 ~16</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F1DDFF"><font face="Tahoma" size="2" color="#000000">LCD_V_SYNC</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">位摄像头接口数据的接收。</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F1DDFF"><font face="Tahoma" size="2" color="#000000">LCD_H_SYNC</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F1DDFF"><font face="Tahoma" size="2" color="#000000">LCD_H_ENABLE</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F1DDFF"><font face="Tahoma" size="2" color="#000000">LCD_DATA_out0~15</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F1DDFF"><font face="Tahoma" size="2" color="#000000">LCD_CS</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F1DDFF"><font face="Tahoma" size="2" color="#000000">CAM_CLK</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F1DDFF"><font face="Tahoma" size="2" color="#000000">CAM_V_SYNC</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F1DDFF"><font face="Tahoma" size="2" color="#000000">CAM_H_SYNC</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F1DDFF"><font face="Tahoma" size="2" color="#000000">CAM_H_ENABLE</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F1DDFF"><font face="Tahoma" size="2" color="#000000">CAM_PCLK</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#F1DDFF"><font face="Tahoma" size="2" color="#000000">CAM_DATA_in0~15</font></td>
+<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="2" height="79" align="left" valign="middle" bgcolor="#9FFFF7"><font face="DejaVu Sans" size="2" color="#000000">红外遥控器</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#9FFFF7"><font face="Tahoma" size="2" color="#000000">RMT_SIG_in0~3</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="2" align="left" valign="middle" bgcolor="#9FFFF7"><font face="DejaVu Sans" size="2" color="#000000">任意 GPIO 管脚</font></td>
+<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">四路 IR 收发器，支持不同</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#9FFFF7"><font face="Tahoma" size="2" color="#000000">RMT_SIG_out0~3</font></td>
+<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">波形标准。</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">接口</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">信号</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">管脚</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">功能</font></b></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="12" height="384" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPI0/1</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPICLK_out_mux</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPICLK</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="12" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">支持 SPI、Dual SPI、  Quad SPI、Octal SPI、 QPI 和 OPI，可以连接片 外 flash 和 RAM。</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPICS0_out</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPICS0</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPICS1_out</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPICS1</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPID_in/_out</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPID</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPIQ_in/_out</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPIQ</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPIWP_in/_out</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPIWP</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPIHD_in/_out</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPIHD</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPID4_in/_out</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">GPIO33</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPID5_in/_out</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">GPIO34</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPID6_in/_out</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">GPIO35</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPID7_in/_out</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">GPIO36</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">SPIDQS_in/_out</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#FFC09E"><font face="Tahoma" size="2" color="#000000">GPIO37</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="9" height="909" align="left" valign="middle" bgcolor="#E0C1FF"><font face="Tahoma" size="2" color="#000000">SPI2</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#E0C1FF"><font face="Tahoma" size="2" color="#000000">FSPICLK_in/_out_mux</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="9" align="left" valign="middle" bgcolor="#E0C1FF"><font face="DejaVu Sans" size="2" color="#000000">任意 GPIO 管脚</font></td>
+<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">支持以下功能：</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#E0C1FF"><font face="Tahoma" size="2" color="#000000">FSPICS0_in/_out</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="middle"><font face="DejaVu Sans" size="2">•SPI、Dual SPI、 Quad SPI、Octal  SPI、QPI 和 OPI 的 主机模式，SPI、 Dual SPI、Quad SPI  和 QPI 的从机模式；</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#E0C1FF"><font face="Tahoma" size="2" color="#000000">FSPICS1~5_out</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="middle"><font face="DejaVu Sans" size="2">•可以连接片外 flash、  RAM 和其他 SPI 设 备</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#E0C1FF"><font face="Tahoma" size="2" color="#000000">FSPID_in/_out</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="middle"><font face="DejaVu Sans" size="2">•SPI 传输的四种时钟 模式；</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#E0C1FF"><font face="Tahoma" size="2" color="#000000">FSPIQ_in/_out</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="middle"><font face="DejaVu Sans" size="2">•可配置的 SPI 频率；</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#E0C1FF"><font face="Tahoma" size="2" color="#000000">FSPIWP_in/_out</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="middle"><font face="DejaVu Sans" size="2">•64 字节缓存或 DMA</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#E0C1FF"><font face="Tahoma" size="2" color="#000000">FSPIHD_in/_out</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">数据缓存。</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#E0C1FF"><font face="Tahoma" size="2" color="#000000">FSPIIO4~7_in/_out</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#E0C1FF"><font face="Tahoma" size="2" color="#000000">FSPIDQS_out</font></td>
+<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="8" height="568" align="left" valign="middle" bgcolor="#6FAFFF"><font face="Tahoma" size="2" color="#000000">SPI3</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#6FAFFF"><font face="Tahoma" size="2" color="#000000">SPI3_CLK_in/_out_mux</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="8" align="left" valign="middle" bgcolor="#6FAFFF"><font face="DejaVu Sans" size="2" color="#000000">任意 GPIO 管脚</font></td>
+<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">支持以下功能：</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#6FAFFF"><font face="Tahoma" size="2" color="#000000">SPI3_CS0_in/_out</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="middle"><font face="DejaVu Sans" size="2">•SPI、Dual SPI、 Quad SPI 和 QPI 的 主机和从机模式；</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#6FAFFF"><font face="Tahoma" size="2" color="#000000">SPI3_CS1_out</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="middle"><font face="DejaVu Sans" size="2">•SPI 传输的四种时钟 模式；</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#6FAFFF"><font face="Tahoma" size="2" color="#000000">SPI3_CS2_out</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="middle"><font face="DejaVu Sans" size="2">•可配置的 SPI 频率；</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#6FAFFF"><font face="Tahoma" size="2" color="#000000">SPI3_D_in/_out</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="middle"><font face="DejaVu Sans" size="2">•64 字节缓存或 DMA</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#6FAFFF"><font face="Tahoma" size="2" color="#000000">SPI3_Q_in/_out</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">数据缓存。</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#6FAFFF"><font face="Tahoma" size="2" color="#000000">SPI3_WP_in/_out</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#6FAFFF"><font face="Tahoma" size="2" color="#000000">SPI3_HD_in/_out</font></td>
+<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="4" height="155" align="left" valign="middle" bgcolor="#BCFFA7"><font face="DejaVu Sans" size="2" color="#000000">脉冲计数器</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BCFFA7"><font face="Tahoma" size="2" color="#000000">PCNT_SIG_CH0_in0~3</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="4" align="left" valign="middle" bgcolor="#BCFFA7"><font face="DejaVu Sans" size="2" color="#000000">任意 GPIO 管脚</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="4" align="justify" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">脉冲计数器通过七种模式 捕捉脉冲并对脉冲边沿计 数。</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BCFFA7"><font face="Tahoma" size="2" color="#000000">PCNT_SIG_CH1_in0~3</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BCFFA7"><font face="Tahoma" size="2" color="#000000">PCNT_CTRL_CH0_in0~3</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BCFFA7"><font face="Tahoma" size="2" color="#000000">PCNT_CTRL_CH1_in0~3</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">接口</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">信号</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">管脚</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">功能</font></b></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="8" height="460" align="left" valign="middle" bgcolor="#EBC49A"><font face="Tahoma" size="2" color="#000000">USB OTG</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="Tahoma" size="2" color="#000000">D-</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="DejaVu Sans" size="2" color="#000000">GPIO19（内部 PHY 使用）</font></td>
+<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="justify" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">全速 USB OTG（USB</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="Tahoma" size="2" color="#000000">D+</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="DejaVu Sans" size="2" color="#000000">GPIO20（内部 PHY 使用）</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="justify" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">OTG 支持使用芯片内部集 成的全速 PHY，也支持使 用外接全速 PHY）</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="Tahoma" size="2" color="#000000">VP</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="DejaVu Sans" size="2" color="#000000">MTMS（外部 PHY 使用）</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="Tahoma" size="2" color="#000000">VM</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="DejaVu Sans" size="2" color="#000000">MTDI（外部 PHY 使用）</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="Tahoma" size="2" color="#000000">RCV</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="DejaVu Sans" size="2" color="#000000">GPIO21（外部 PHY 使用）</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="Tahoma" size="2" color="#000000">OEN</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="DejaVu Sans" size="2" color="#000000">MTDO（外部 PHY 使用）</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="Tahoma" size="2" color="#000000">VPO</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="DejaVu Sans" size="2" color="#000000">MTCK（外部 PHY 使用）</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="Tahoma" size="2" color="#000000">VMO</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#EBC49A"><font face="DejaVu Sans" size="2" color="#000000">GPIO38（外部 PHY 使用）</font></td>
+<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="7" height="440" align="left" valign="middle" bgcolor="#B89FEB"><font face="DejaVu Sans" size="2" color="#000000">USB 串口/  JTAG 控制器</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#B89FEB"><font face="Tahoma" size="2" color="#000000">D-</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#B89FEB"><font face="DejaVu Sans" size="2" color="#000000">GPIO19（内部 PHY 使用）</font></td>
+<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">编程 flash 及 CPU 调试</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#B89FEB"><font face="Tahoma" size="2" color="#000000">D+</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#B89FEB"><font face="DejaVu Sans" size="2" color="#000000">GPIO20（内部 PHY 使用）</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">（USB 串口/JTAG 控制器 支持使用芯片内部集成的 全速 PHY，也支持使用外 接全速 PHY）</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#B89FEB"><font face="Tahoma" size="2" color="#000000">VP</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#B89FEB"><font face="DejaVu Sans" size="2" color="#000000">MTMS（外部 PHY 使用）</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#B89FEB"><font face="Tahoma" size="2" color="#000000">VM</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#B89FEB"><font face="DejaVu Sans" size="2" color="#000000">MTDI（外部 PHY 使用）</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#B89FEB"><font face="Tahoma" size="2" color="#000000">OEN</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#B89FEB"><font face="DejaVu Sans" size="2" color="#000000">MTDO（外部 PHY 使用）</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#B89FEB"><font face="Tahoma" size="2" color="#000000">VPO</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#B89FEB"><font face="DejaVu Sans" size="2" color="#000000">MTCK（外部 PHY 使用）</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#B89FEB"><font face="Tahoma" size="2" color="#000000">VMO</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#B89FEB"><font face="DejaVu Sans" size="2" color="#000000">GPIO38（外部 PHY 使用）</font></td>
+<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="26" height="1408" align="center" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SD/MMC</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CCLK_out_1~2</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="26" align="left" valign="middle" bgcolor="#D8E875"><font face="DejaVu Sans" size="2" color="#000000">任意 GPIO 管脚</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="26" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">支持 V3.0.1 标准 SD 内存 卡</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_RST_N_1~2</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CCMD_OD_PULLUP_EN_N</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDIO_TOHOST_INT_out</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CCMD_in/_out_1</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CCMD_in/_out_2</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_10</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_11</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_12</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_13</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_14</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_15</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_16</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_17</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_20</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_21</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_22</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_23</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_24</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_25</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_26</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CDATA_in/_out_27</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_DATA_STROBE_1~2</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CARD_DETECT_N_1~2</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CARD_WRITE_PRT_1~2</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D8E875"><font face="Tahoma" size="2" color="#000000">SDHOST_CARD_INT_N_1~2</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">接口</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">信号</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">管脚</font></b></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#BFBFBF"><b><font face="DejaVu Sans" size="2" color="#000000">功能</font></b></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="18" height="488" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">MCPWM</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM0_SYNC0~2_in</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="18" align="left" valign="middle" bgcolor="#D4B0EE"><font face="DejaVu Sans" size="2" color="#000000">任意 GPIO 管脚</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="18" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">2 个 MCPWM 的输入输出 管脚，包括 PWM 波形的 差分输出，待检测的故障 输入信号，待捕获的输入 信号和 PWM 定时器的外 接同步信号</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM0_F0~2_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM0_CAP0~2_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM1_SYNC0~2_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM1_F0~2_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM1_CAP0~2_in</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM0_out0a</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM0_out0b</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM0_out1a</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM0_out1b</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM0_out2a</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM0_out2b</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM1_out0a</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM1_out0b</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM1_out1a</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM1_out1b</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM1_out2a</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#D4B0EE"><font face="Tahoma" size="2" color="#000000">PWM1_out2b</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="4" height="195" align="left" valign="middle" bgcolor="#ECA6A4"><font face="DejaVu Sans" size="2" color="#000000">TWAI® 控制器</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#ECA6A4"><font face="Tahoma" size="2" color="#000000">TWAI_RX</font></td>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan="4" align="left" valign="middle" bgcolor="#ECA6A4"><font face="DejaVu Sans" size="2" color="#000000">任意 GPIO 管脚</font></td>
+<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">兼容 ISO 11898-1 协议</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#ECA6A4"><font face="Tahoma" size="2" color="#000000">TWAI_TX</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle"><font face="DejaVu Sans" size="2" color="#000000">（CAN 规范 2.0），最高支 持 1 Mbit/s 速率</font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#ECA6A4"><font face="Tahoma" size="2" color="#000000">TWAI_BUS_OFF_ON</font></td>
+<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="middle" bgcolor="#ECA6A4"><font face="Tahoma" size="2" color="#000000">TWAI_CLKOUT</font></td>
+<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign="top"><font color="#000000"><br></font></td>
+</tr>
+</tbody></table>
+<h2><span class="ez-toc-section" id="%E5%8F%82%E8%80%83"></span>参考<span class="ez-toc-section-end"></span></h2>
+<p>ESP32-S3-DevKitC-1 文档：<br>
+<a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html">https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html</a></p>
+<p>ESP32 S3 Pin Reference：<br>
+<a href="https://github.com/bdring/FluidNC/wiki/ESP32-S3-Pin-Reference">https://github.com/bdring/FluidNC/wiki/ESP32-S3-Pin-Reference</a></p>
+<p>ESP32-S3 快速参考手册：<br>
+<a href="https://docs.01studio.cc/esp32-s3/quickref.html">https://docs.01studio.cc/esp32-s3/quickref.html</a></p>
+<p>ESP32-S3 系列芯片 技术规格书：<br>
+<a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_cn.pdf">https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_cn.pdf</a></p>
+<p>ESP32-S3-WROOM-1 ESP32-S3-WROOM-1U 技术规格书：<br>
+<a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_cn.pdf">https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_cn.pdf</a></p>
+<!-- AI CONTENT END 2 -->
+		</div>
+
+	</div>
+
+	</article>
+
+		</div><!-- #content -->
+		<div>
+			<div style="height:2em"></div>
+			<script async="" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/adsbygoogle.js" crossorigin="anonymous"></script>
+			<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5370940476348866" data-ad-slot="7569275666"></ins>
+			<script>
+				 (adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+			<div style="height:2em"></div>
+		</div>
+
+		
+		<ul class="default-wp-page clearfix">
+			<li class="previous"><a href="https://lingshunlab.com/book/esp32/esp32-install-wled" rel="prev"><span class="meta-nav">←</span> ESP32 通过网页在线烧写WLED固件</a></li>
+			<li class="next"><a href="https://lingshunlab.com/book/esp32/esp32-c3-pin-reference" rel="next">ESP32-C3 引脚参考大全 <span class="meta-nav">→</span></a></li>
+		</ul>
+
+		
+	<div class="related-posts-wrapper">
+
+		<h4 class="related-posts-main-title">
+			<i class="fa fa-thumbs-up"></i><span>You May Also Like</span>
+		</h4>
+
+		<div class="related-posts clearfix">
+
+							<div class="single-related-posts">
+
+											<div class="related-posts-thumbnail">
+							<a href="https://lingshunlab.com/book/raspberry-pi/rasoberry-pi-introduction" title="认识 Raspberry Pi 树莓派">
+								<img fifu-featured="1" width="364" height="205" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/raspberry-pi-borad-2.png" class="attachment-colormag-featured-post-medium size-colormag-featured-post-medium wp-post-image" alt="" title="" loading="lazy">							</a>
+						</div>
+					
+					<div class="article-content">
+						<h3 class="entry-title">
+							<a href="https://lingshunlab.com/book/raspberry-pi/rasoberry-pi-introduction" rel="bookmark" title="认识 Raspberry Pi 树莓派">
+								认识 Raspberry Pi 树莓派							</a>
+						</h3><!--/.post-title-->
+
+						<div class="below-entry-meta">
+			<span class="posted-on"><a href="https://lingshunlab.com/book/raspberry-pi/rasoberry-pi-introduction" title="上午9:58" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2021-09-11T09:58:12+08:00">2021年9月11日</time><time class="updated" datetime="2022-07-30T08:43:58+08:00">2022年7月30日</time></a></span>
+			<span class="byline">
+				<span class="author vcard">
+					<i class="fa fa-user"></i>
+					<a class="url fn n" href="https://lingshunlab.com/author/lingshun" title="lingshun">
+						lingshun					</a>
+				</span>
+			</span>
+
+			</div>					</div>
+
+				</div><!--/.related-->
+							<div class="single-related-posts">
+
+											<div class="related-posts-thumbnail">
+							<a href="https://lingshunlab.com/book/raspberry-pi/raspberry-pi-install-nodejs-and-npm" title="Raspberry Pi 安装 node.js 和 npm">
+								<img fifu-featured="1" width="364" height="205" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/raspberry-pi-install-nodejs-and-npm-cover.png" class="attachment-colormag-featured-post-medium size-colormag-featured-post-medium wp-post-image" alt="" title="" loading="lazy">							</a>
+						</div>
+					
+					<div class="article-content">
+						<h3 class="entry-title">
+							<a href="https://lingshunlab.com/book/raspberry-pi/raspberry-pi-install-nodejs-and-npm" rel="bookmark" title="Raspberry Pi 安装 node.js 和 npm">
+								Raspberry Pi 安装 node.js 和 npm							</a>
+						</h3><!--/.post-title-->
+
+						<div class="below-entry-meta">
+			<span class="posted-on"><a href="https://lingshunlab.com/book/raspberry-pi/raspberry-pi-install-nodejs-and-npm" title="下午3:02" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2021-09-25T15:02:44+08:00">2021年9月25日</time><time class="updated" datetime="2022-07-30T16:52:38+08:00">2022年7月30日</time></a></span>
+			<span class="byline">
+				<span class="author vcard">
+					<i class="fa fa-user"></i>
+					<a class="url fn n" href="https://lingshunlab.com/author/lingshun" title="lingshun">
+						lingshun					</a>
+				</span>
+			</span>
+
+			</div>					</div>
+
+				</div><!--/.related-->
+							<div class="single-related-posts">
+
+											<div class="related-posts-thumbnail">
+							<a href="https://lingshunlab.com/book/esp32/esp32-and-st7789-lcd-display-hello-world-use-lovgangfx" title="ESP32 使用 LovyanGFX 点亮1.54寸IPS全视角TFT屏幕（ST7789系列 240×240）">
+								<img fifu-featured="1" width="364" height="205" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/esp32-and-st7789-lcd-display-hello-world-use-lovgangfx-cover.png" class="attachment-colormag-featured-post-medium size-colormag-featured-post-medium wp-post-image" alt="" title="" loading="lazy">							</a>
+						</div>
+					
+					<div class="article-content">
+						<h3 class="entry-title">
+							<a href="https://lingshunlab.com/book/esp32/esp32-and-st7789-lcd-display-hello-world-use-lovgangfx" rel="bookmark" title="ESP32 使用 LovyanGFX 点亮1.54寸IPS全视角TFT屏幕（ST7789系列 240×240）">
+								ESP32 使用 LovyanGFX 点亮1.54寸IPS全视角TFT屏幕（ST7789系列 240×240）							</a>
+						</h3><!--/.post-title-->
+
+						<div class="below-entry-meta">
+			<span class="posted-on"><a href="https://lingshunlab.com/book/esp32/esp32-and-st7789-lcd-display-hello-world-use-lovgangfx" title="下午8:30" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2023-03-06T20:30:30+08:00">2023年3月6日</time><time class="updated" datetime="2023-03-07T08:07:51+08:00">2023年3月7日</time></a></span>
+			<span class="byline">
+				<span class="author vcard">
+					<i class="fa fa-user"></i>
+					<a class="url fn n" href="https://lingshunlab.com/author/lingshun" title="lingshun">
+						lingshun					</a>
+				</span>
+			</span>
+
+			</div>					</div>
+
+				</div><!--/.related-->
+			
+		</div><!--/.post-related-->
+
+	</div>
+
+	
+	</div><!-- #primary -->
+
+
+<div id="secondary">
+	
+	<aside id="colormag_featured_posts_vertical_widget-1" class="widget widget_featured_posts widget_featured_posts_vertical widget_featured_meta clearfix">
+		<h3 class="widget-title" style="border-bottom-color:#6ac4c2;"><span style="background-color:#6ac4c2;">News</span></h3><div class="first-post">
+			<div class="single-article clearfix">
+				<figure><a href="https://lingshunlab.com/book/arduino/arduino-use-mcp2515-canbus" title="Arduino 使用MCP2515模块进行CANBUS通讯"><img fifu-featured="1" width="364" height="205" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/arduino-use-mcp2515-canbus-cover-c.png" class="attachment-colormag-featured-post-medium size-colormag-featured-post-medium wp-post-image" alt="" title=""></a></figure>
+				<div class="article-content">
+					<div class="above-entry-meta"><span class="cat-links"><a href="https://lingshunlab.com/category/book/arduino" style="background:#6ac4c2" rel="category tag">Arduino</a>&nbsp;<a href="https://lingshunlab.com/category/book" style="background:#d8a0c2" rel="category tag">指南</a>&nbsp;</span></div>		<h3 class="entry-title">
+			<a href="https://lingshunlab.com/book/arduino/arduino-use-mcp2515-canbus" title="Arduino 使用MCP2515模块进行CANBUS通讯">
+				Arduino 使用MCP2515模块进行CANBUS通讯			</a>
+		</h3>
+		<div class="below-entry-meta"><span class="posted-on"><a href="https://lingshunlab.com/book/arduino/arduino-use-mcp2515-canbus" title="下午3:39" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2023-08-10T15:39:59+08:00">2023年8月10日</time><time class="updated" datetime="2023-08-10T15:46:10+08:00">2023年8月10日</time></a></span>
+		<span class="byline">
+			<span class="author vcard">
+				<i class="fa fa-user"></i>
+				<a class="url fn n" href="https://lingshunlab.com/author/lingshun" title="lingshun">
+					lingshun				</a>
+			</span>
+		</span>
+
+		
+		</div>
+											<div class="entry-content">
+							<p>使用Arduino Uno + MCP2515 模块和 Arduino Nano + MCP2515 模块 进行CANBUS通讯。</p>
+						</div>
+									</div>
+
+			</div>
+			</div><div class="following-post">
+			<div class="single-article clearfix">
+				<figure><a href="https://lingshunlab.com/book/arduino/measuring-distance-with-the-hc-sr04-ultrasonic-sensor-and-arduino-uno" title="Arduino Uno 超声波传感器HC-SR04测距"><img fifu-featured="1" width="130" height="73" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/measuring-distance-with-the-hc-sr04-ultrasonic-sensor-and-ar.png" class="attachment-colormag-featured-post-small size-colormag-featured-post-small wp-post-image" alt="" title="" loading="lazy"></a></figure>
+				<div class="article-content">
+					<div class="above-entry-meta"><span class="cat-links"><a href="https://lingshunlab.com/category/book/arduino" style="background:#6ac4c2" rel="category tag">Arduino</a>&nbsp;</span></div>		<h3 class="entry-title">
+			<a href="https://lingshunlab.com/book/arduino/measuring-distance-with-the-hc-sr04-ultrasonic-sensor-and-arduino-uno" title="Arduino Uno 超声波传感器HC-SR04测距">
+				Arduino Uno 超声波传感器HC-SR04测距			</a>
+		</h3>
+		<div class="below-entry-meta"><span class="posted-on"><a href="https://lingshunlab.com/book/arduino/measuring-distance-with-the-hc-sr04-ultrasonic-sensor-and-arduino-uno" title="下午7:22" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2023-07-19T19:22:03+08:00">2023年7月19日</time><time class="updated" datetime="2023-07-20T07:11:12+08:00">2023年7月20日</time></a></span>
+		<span class="byline">
+			<span class="author vcard">
+				<i class="fa fa-user"></i>
+				<a class="url fn n" href="https://lingshunlab.com/author/lingshun" title="lingshun">
+					lingshun				</a>
+			</span>
+		</span>
+
+		
+		</div>
+									</div>
+
+			</div>
+			
+			<div class="single-article clearfix">
+				<figure><a href="https://lingshunlab.com/book/arduino/esp32-power-failure-data-storage-eeprom-read-and-write" title="ESP32 断电数据保存 EEPROM数据读取和写入"><img fifu-featured="1" width="130" height="73" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/esp32-power-failure-data-storage-eeprom-read-and-write-cover.png" class="attachment-colormag-featured-post-small size-colormag-featured-post-small wp-post-image" alt="" title="" loading="lazy"></a></figure>
+				<div class="article-content">
+					<div class="above-entry-meta"><span class="cat-links"><a href="https://lingshunlab.com/category/book/arduino" style="background:#6ac4c2" rel="category tag">Arduino</a>&nbsp;<a href="https://lingshunlab.com/category/book/esp32" style="background:#a4c4be" rel="category tag">ESP32</a>&nbsp;<a href="https://lingshunlab.com/category/book" style="background:#d8a0c2" rel="category tag">指南</a>&nbsp;</span></div>		<h3 class="entry-title">
+			<a href="https://lingshunlab.com/book/arduino/esp32-power-failure-data-storage-eeprom-read-and-write" title="ESP32 断电数据保存 EEPROM数据读取和写入">
+				ESP32 断电数据保存 EEPROM数据读取和写入			</a>
+		</h3>
+		<div class="below-entry-meta"><span class="posted-on"><a href="https://lingshunlab.com/book/arduino/esp32-power-failure-data-storage-eeprom-read-and-write" title="下午9:20" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2023-02-20T21:20:27+08:00">2023年2月20日</time><time class="updated" datetime="2023-02-20T21:45:42+08:00">2023年2月20日</time></a></span>
+		<span class="byline">
+			<span class="author vcard">
+				<i class="fa fa-user"></i>
+				<a class="url fn n" href="https://lingshunlab.com/author/lingshun" title="lingshun">
+					lingshun				</a>
+			</span>
+		</span>
+
+		
+		</div>
+									</div>
+
+			</div>
+			
+			<div class="single-article clearfix">
+				<figure><a href="https://lingshunlab.com/book/arduino/arduino-uno-use-2204m-drive-step-motor" title="Arduino Uno 使用2204M驱动器驱动步进电机"><img fifu-featured="1" width="130" height="73" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/arduino-uno-use-2204m-drive-step-motor-cover.png" class="attachment-colormag-featured-post-small size-colormag-featured-post-small wp-post-image" alt="" title="" loading="lazy"></a></figure>
+				<div class="article-content">
+					<div class="above-entry-meta"><span class="cat-links"><a href="https://lingshunlab.com/category/book/arduino" style="background:#6ac4c2" rel="category tag">Arduino</a>&nbsp;<a href="https://lingshunlab.com/category/book" style="background:#d8a0c2" rel="category tag">指南</a>&nbsp;</span></div>		<h3 class="entry-title">
+			<a href="https://lingshunlab.com/book/arduino/arduino-uno-use-2204m-drive-step-motor" title="Arduino Uno 使用2204M驱动器驱动步进电机">
+				Arduino Uno 使用2204M驱动器驱动步进电机			</a>
+		</h3>
+		<div class="below-entry-meta"><span class="posted-on"><a href="https://lingshunlab.com/book/arduino/arduino-uno-use-2204m-drive-step-motor" title="下午1:24" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2022-12-10T13:24:40+08:00">2022年12月10日</time><time class="updated" datetime="2022-12-10T13:31:23+08:00">2022年12月10日</time></a></span>
+		<span class="byline">
+			<span class="author vcard">
+				<i class="fa fa-user"></i>
+				<a class="url fn n" href="https://lingshunlab.com/author/lingshun" title="lingshun">
+					lingshun				</a>
+			</span>
+		</span>
+
+		
+		</div>
+									</div>
+
+			</div>
+			</div></aside><aside id="custom_html-3" class="widget_text widget widget_custom_html clearfix"><div class="textwidget custom-html-widget"><script async="" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/adsbygoogle.js" crossorigin="anonymous"></script>
+<!-- 侧边栏 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5370940476348866" data-ad-slot="6912129103" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></aside><aside id="colormag_featured_posts_vertical_widget-11" class="widget widget_featured_posts widget_featured_posts_vertical widget_featured_meta clearfix">
+		<div class="first-post">
+			<div class="single-article clearfix">
+				
+				<div class="article-content">
+					<div class="above-entry-meta"><span class="cat-links"><a href="https://lingshunlab.com/category/ai" rel="category tag">AI</a>&nbsp;</span></div>		<h3 class="entry-title">
+			<a href="https://lingshunlab.com/ai/ai-online-matting-image" title="AI在线抠图">
+				AI在线抠图			</a>
+		</h3>
+		<div class="below-entry-meta"><span class="posted-on"><a href="https://lingshunlab.com/ai/ai-online-matting-image" title="下午4:50" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2023-08-04T16:50:35+08:00">2023年8月4日</time><time class="updated" datetime="2023-08-05T11:03:43+08:00">2023年8月5日</time></a></span>
+		<span class="byline">
+			<span class="author vcard">
+				<i class="fa fa-user"></i>
+				<a class="url fn n" href="https://lingshunlab.com/author/lingshun" title="lingshun">
+					lingshun				</a>
+			</span>
+		</span>
+
+		
+		</div>
+											<div class="entry-content">
+							<p>此凌顺实验室（lingshunlab.com）分享记录一些在线的AI抠图网站</p>
+						</div>
+									</div>
+
+			</div>
+			</div></aside>
+	</div>
+		</div><!-- .inner-wrap -->
+				</div><!-- #main -->
+				<footer id="colophon" class="clearfix ">
+		
+<div class="footer-widgets-wrapper">
+	<div class="inner-wrap">
+		<div class="footer-widgets-area clearfix">
+			<div class="tg-footer-main-widget">
+				<div class="tg-first-footer-widget">
+					<aside id="custom_html-11" class="widget_text widget widget_custom_html clearfix"><h3 class="widget-title"><span>关于本站</span></h3><div class="textwidget custom-html-widget"><a title="LingShunLAB" href="https://lingshunlab.com/"><img alt="LingShunLAB" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/logo-1-s.png"></a><br>分享一些开发过程中的遇到的问题，方便查阅，如有错误，请关注公众号指出指导，万分感谢。</div></aside>				</div>
+			</div>
+
+			<div class="tg-footer-other-widgets">
+				<div class="tg-second-footer-widget">
+					<aside id="custom_html-19" class="widget_text widget widget_custom_html clearfix"><div class="textwidget custom-html-widget">友情链接
+<br>
+<div><a href="https://makeronsite.com/">创客出手</a></div>
+<div><a href="https://beets3d.cn/">红菜3D</a></div></div></aside>				</div>
+				<div class="tg-third-footer-widget">
+									</div>
+				<div class="tg-fourth-footer-widget">
+					<aside id="custom_html-17" class="widget_text widget widget_custom_html clearfix"><div class="textwidget custom-html-widget"><script async="" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/adsbygoogle.js" crossorigin="anonymous"></script>
+<!-- 横幅广告 -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5370940476348866" data-ad-slot="7829377539" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></aside>				</div>
+			</div>
+		</div>
+	</div>
+</div>
+		<div class="footer-socket-wrapper clearfix">
+			<div class="inner-wrap">
+				<div class="footer-socket-area">
+		
+		<div class="footer-socket-right-section">
+					</div>
+
+				<div class="footer-socket-left-section">
+			<div class="copyright">Copyright © 2023 <a href="https://lingshunlab.com/" title="凌顺实验室"><span>凌顺实验室</span></a>. All rights reserved.<br>Theme: <a href="https://themegrill.com/themes/colormag" target="_blank" title="ColorMag" rel="nofollow"><span>ColorMag</span></a> by ThemeGrill. Powered by <a href="https://wordpress.org/" target="_blank" title="WordPress" rel="nofollow"><span>WordPress</span></a>.</div><div><a href="http://beian.miit.gov.cn/" target="_blank"> 粤ICP备18158987号-1</a></div>		</div>
+				</div><!-- .footer-socket-area -->
+					</div><!-- .inner-wrap -->
+		</div><!-- .footer-socket-wrapper -->
+				</footer><!-- #colophon -->
+				<a href="#masthead" id="scroll-up" style="display: none;"><i class="fa fa-chevron-up"></i></a>
+				</div><!-- #page -->
+			<script type="text/javascript">
+		var c = document.body.className;
+		c = c.replace( /everest-forms-no-js/, 'everest-forms-js' );
+		document.body.className = c;
+	</script>
+	<script type="text/javascript" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/jquery.bxslider.min.js" id="colormag-bxslider-js"></script>
+<script type="text/javascript" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/jquery.sticky.min.js" id="colormag-sticky-menu-js"></script>
+<script type="text/javascript" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/jquery.newsTicker.min.js" id="colormag-news-ticker-js"></script>
+<script type="text/javascript" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/jquery.magnific-popup.min.js" id="colormag-featured-image-popup-js"></script>
+<script type="text/javascript" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/navigation.min.js" id="colormag-navigation-js"></script>
+<script type="text/javascript" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/jquery.fitvids.min.js" id="colormag-fitvids-js"></script>
+<script type="text/javascript" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/skip-link-focus-fix.min.js" id="colormag-skip-link-focus-fix-js"></script>
+<script type="text/javascript" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/colormag-custom.min.js" id="colormag-custom-js"></script>
+<script type="text/javascript" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/wp-embed.min.js" id="wp-embed-js"></script>
+<script type="text/javascript" id="fifu-image-js-js-extra">
+/* <![CDATA[ */
+var fifuImageVars = {"fifu_lazy":"","fifu_woo_lbox_enabled":"1","fifu_woo_zoom":"inline","fifu_is_product":"","fifu_is_flatsome_active":"","fifu_rest_url":"https:\/\/lingshunlab.com\/wp-json\/","fifu_nonce":"50d58e83b4"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="ESP32-S3%20%E5%BC%95%E8%84%9A%E5%8F%82%E8%80%83%E5%A4%A7%E5%85%A8%20%E2%80%93%20%E5%87%8C%E9%A1%BA%E5%AE%9E%E9%AA%8C%E5%AE%A4_files/image.js" id="fifu-image-js-js"></script>
+  <script id="module-highlight-js"> (function($) { $(function() { $("pre code").each(function(i, e) { var thisclass = $(this).attr("class"); if (typeof thisclass !== "undefined") { if ( thisclass.indexOf("katex") === -1 && thisclass.indexOf("mermaid") === -1 && thisclass.indexOf("seq") === -1 && thisclass.indexOf("flow") === -1 ) { if (typeof hljs !== "undefined") { $(this).closest("pre").addClass("hljs"); hljs.highlightBlock(e); } else { console.log("%c WP Githuber MD %c You have enabled highlight.js modules already, but you have to update this post to take effect, identifying which file should be loaded.\nGithuber MD does not load a whole-fat-packed file for every post.", "background: #222; color: #bada55", "color: #637338"); } } } }); }); })(jQuery); </script> 
+
+
+</body></html>

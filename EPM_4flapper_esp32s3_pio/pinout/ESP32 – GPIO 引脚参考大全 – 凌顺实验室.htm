@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+			<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="http://gmpg.org/xfn/11" />
+		<title>ESP32 &#8211; GPIO 引脚参考大全 &#8211; 凌顺实验室</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="凌顺实验室 &raquo; Feed" href="https://lingshunlab.com/feed" />
+<link rel="alternate" type="application/rss+xml" title="凌顺实验室 &raquo; 评论Feed" href="https://lingshunlab.com/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="凌顺实验室 &raquo; ESP32 &#8211; GPIO 引脚参考大全评论Feed" href="https://lingshunlab.com/book/esp32/esp32-pinout-reference/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/lingshunlab.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.7.2"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://lingshunlab.com/wp-includes/css/dist/block-library/style.min.css?ver=5.7.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-theme-css'  href='https://lingshunlab.com/wp-includes/css/dist/block-library/theme.min.css?ver=5.7.2' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css'  href='https://lingshunlab.com/wp-includes/css/dashicons.min.css?ver=5.7.2' type='text/css' media='all' />
+<link rel='stylesheet' id='everest-forms-general-css'  href='https://lingshunlab.com/wp-content/plugins/everest-forms/assets/css/everest-forms.css?ver=1.9.1' type='text/css' media='all' />
+<style id='md-style-inline-css' type='text/css'>
+ 
+</style>
+<link rel='stylesheet' id='wp-pagenavi-css'  href='https://lingshunlab.com/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=2.70' type='text/css' media='all' />
+<link rel='stylesheet' id='ez-icomoon-css'  href='https://lingshunlab.com/wp-content/plugins/easy-table-of-contents/vendor/icomoon/style.min.css?ver=2.0.32' type='text/css' media='all' />
+<link rel='stylesheet' id='ez-toc-css'  href='https://lingshunlab.com/wp-content/plugins/easy-table-of-contents/assets/css/screen.min.css?ver=2.0.32' type='text/css' media='all' />
+<style id='ez-toc-inline-css' type='text/css'>
+div#ez-toc-container p.ez-toc-title {font-size: 120%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 95%;}div#ez-toc-container nav ul ul li ul li {font-size: 90%!important;}
+</style>
+<link rel='stylesheet' id='colormag_style-css'  href='https://lingshunlab.com/wp-content/themes/colormag/style.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='colormag-featured-image-popup-css-css'  href='https://lingshunlab.com/wp-content/themes/colormag/js/magnific-popup/magnific-popup.min.css?ver=2.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='colormag-fontawesome-css'  href='https://lingshunlab.com/wp-content/themes/colormag/fontawesome/css/font-awesome.min.css?ver=2.1.3' type='text/css' media='all' />
+<script type='text/javascript' src='https://lingshunlab.com/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://lingshunlab.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<!--[if lte IE 8]>
+<script type='text/javascript' src='https://lingshunlab.com/wp-content/themes/colormag/js/html5shiv.min.js?ver=2.1.3' id='html5-js'></script>
+<![endif]-->
+<link rel="https://api.w.org/" href="https://lingshunlab.com/wp-json/" /><link rel="alternate" type="application/json" href="https://lingshunlab.com/wp-json/wp/v2/posts/981" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://lingshunlab.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://lingshunlab.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.7.2" />
+<meta name="generator" content="Everest Forms 1.9.1" />
+<link rel="canonical" href="https://lingshunlab.com/book/esp32/esp32-pinout-reference" />
+<link rel='shortlink' href='https://lingshunlab.com/?p=981' />
+<link rel="alternate" type="application/json+oembed" href="https://lingshunlab.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flingshunlab.com%2Fbook%2Fesp32%2Fesp32-pinout-reference" />
+<link rel="alternate" type="text/xml+oembed" href="https://lingshunlab.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flingshunlab.com%2Fbook%2Fesp32%2Fesp32-pinout-reference&#038;format=xml" />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com"><meta property="og:image" content="https://img.lingshunlab.com/esp32-pinout-gpio-reference-cover.png" /><meta property="og:title" content='ESP32 &#8211; GPIO 引脚参考大全' />
+<meta property="og:description" content='ESP32 - GPIO 各种引脚作用参考' />
+
+<meta name="twitter:card" content='summary_large_image' />
+<meta name="twitter:title" content='ESP32 &#8211; GPIO 引脚参考大全' />
+<meta name="twitter:description" content='ESP32 - GPIO 各种引脚作用参考' /><meta name="twitter:image" content="https://img.lingshunlab.com/esp32-pinout-gpio-reference-cover.png" />			<meta name="keywords" content="Esp32,GPIO,引脚,说明">
+			<!-- Analytics by WP Statistics v13.2.5 - https://wp-statistics.com/ -->
+<link rel="pingback" href="https://lingshunlab.com/xmlrpc.php"><link rel="icon" href="https://lingshunlab.com/wp-content/uploads/2022/07/time-logo-150x150.png" sizes="32x32" />
+<link rel="icon" href="https://lingshunlab.com/wp-content/uploads/2022/07/time-logo.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://lingshunlab.com/wp-content/uploads/2022/07/time-logo.png" />
+<meta name="msapplication-TileImage" content="https://lingshunlab.com/wp-content/uploads/2022/07/time-logo.png" />
+</head>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5370940476348866" crossorigin="anonymous"></script>
+
+<body class="post-template-default single single-post postid-981 single-format-standard wp-custom-logo wp-embed-responsive everest-forms-no-js right-sidebar box-layout">
+
+		<div id="page" class="hfeed site">
+				<a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+				<header id="masthead" class="site-header clearfix ">
+				<div id="header-text-nav-container" class="clearfix">
+		
+			<div class="news-bar">
+				<div class="inner-wrap clearfix">
+					
+		<div class="date-in-header">
+			星期六, 8月 19, 2023		</div>
+
+		
+		<div class="breaking-news">
+			<strong class="breaking-news-latest">Latest:</strong>
+
+			<ul class="newsticker">
+									<li>
+						<a href="https://lingshunlab.com/book/jetson-nano/hello-ai-jetson-nano-use-detectnet-locating-objects-in-notebook" title="《Hello AI》系列：Jetson Nano在Jupyterlab中使用DetectNet 定位物体(Python)">
+							《Hello AI》系列：Jetson Nano在Jupyterlab中使用DetectNet 定位物体(Python)						</a>
+					</li>
+									<li>
+						<a href="https://lingshunlab.com/book/arduino/arduino-use-mcp2515-canbus" title="Arduino 使用MCP2515模块进行CANBUS通讯">
+							Arduino 使用MCP2515模块进行CANBUS通讯						</a>
+					</li>
+									<li>
+						<a href="https://lingshunlab.com/ai/ai-online-matting-image" title="AI在线抠图">
+							AI在线抠图						</a>
+					</li>
+									<li>
+						<a href="https://lingshunlab.com/book/esp32/esp32-converting-pwm-to-analog-voltage" title="ESP32 使用PWM转换电压（0-10V）模块">
+							ESP32 使用PWM转换电压（0-10V）模块						</a>
+					</li>
+									<li>
+						<a href="https://lingshunlab.com/book/esp32/esp32-use-pwm-control-led" title="ESP32 使用PWM控制板载的LED实现呼吸效果">
+							ESP32 使用PWM控制板载的LED实现呼吸效果						</a>
+					</li>
+							</ul>
+		</div>
+
+						</div>
+			</div>
+
+			
+		<div class="inner-wrap">
+			<div id="header-text-nav-wrap" class="clearfix">
+
+				<div id="header-left-section">
+											<div id="header-logo-image">
+							<a href="https://lingshunlab.com/" class="custom-logo-link" rel="home"><img width="269" height="90" src="https://lingshunlab.com/wp-content/uploads/2022/07/logo-1-s.png" class="custom-logo" alt="凌顺实验室" /></a>						</div><!-- #header-logo-image -->
+						
+					<div id="header-text" class="screen-reader-text">
+													<h3 id="site-title">
+								<a href="https://lingshunlab.com/" title="凌顺实验室" rel="home">凌顺实验室</a>
+							</h3>
+						
+													<p id="site-description">
+								凌晨时分，顺便做个实验							</p><!-- #site-description -->
+											</div><!-- #header-text -->
+				</div><!-- #header-left-section -->
+
+				<div id="header-right-section">
+									</div><!-- #header-right-section -->
+
+			</div><!-- #header-text-nav-wrap -->
+		</div><!-- .inner-wrap -->
+
+		
+		<nav id="site-navigation" class="main-navigation clearfix" role="navigation">
+			<div class="inner-wrap clearfix">
+				
+					<div class="home-icon">
+						<a href="https://lingshunlab.com/"
+						   title="凌顺实验室"
+						>
+							<i class="fa fa-home"></i>
+						</a>
+					</div>
+				
+									<div class="search-random-icons-container">
+						
+		<div class="random-post">
+							<a href="https://lingshunlab.com/book/arduino/arduino-use-air-pressure-sensor-bmp180" title="View a random post">
+					<i class="fa fa-random"></i>
+				</a>
+					</div>
+
+									<div class="top-search-wrap">
+								<i class="fa fa-search search-top"></i>
+								<div class="search-form-top">
+									
+<form action="https://lingshunlab.com/" class="search-form searchform clearfix" method="get" role="search">
+
+	<div class="search-wrap">
+		<input type="search"
+		       class="s field"
+		       name="s"
+		       value=""
+		       placeholder="Search"
+		/>
+
+		<button class="search-icon" type="submit"></button>
+	</div>
+
+</form><!-- .searchform -->
+								</div>
+							</div>
+											</div>
+				
+				<p class="menu-toggle"></p>
+				<div class="menu-primary-container"><ul id="menu-primary" class="menu"><li id="menu-item-1188" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1188"><a href="https://lingshunlab.com/category/book/arduino">Arduino</a></li>
+<li id="menu-item-1192" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1192"><a href="https://lingshunlab.com/category/book/raspberry-pi">Raspberry Pi</a></li>
+<li id="menu-item-1189" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1189"><a href="https://lingshunlab.com/category/book/esp32">ESP32</a></li>
+<li id="menu-item-1190" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1190"><a href="https://lingshunlab.com/category/book/jetson-nano">Jetson nano</a></li>
+<li id="menu-item-1191" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1191"><a href="https://lingshunlab.com/category/book/pi-pico">Raspberry Pi Pico</a></li>
+<li id="menu-item-1473" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1473"><a href="https://lingshunlab.com/category/book/rockpi">Rock Pi</a></li>
+<li id="menu-item-1770" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1770"><a href="https://lingshunlab.com/category/book/c51">51单片机</a></li>
+<li id="menu-item-1954" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1954"><a href="https://lingshunlab.com/category/book/docker">Docker</a></li>
+<li id="menu-item-1372" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1372"><a href="https://lingshunlab.com/category/program">编程</a>
+<ul class="sub-menu">
+	<li id="menu-item-1980" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1980"><a href="https://lingshunlab.com/category/book/processing">Processing</a></li>
+	<li id="menu-item-1373" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1373"><a href="https://lingshunlab.com/category/program/python">Python</a></li>
+</ul>
+</li>
+<li id="menu-item-1724" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-1724"><a href="https://lingshunlab.com/category/3dprinter">3D打印机</a>
+<ul class="sub-menu">
+	<li id="menu-item-1725" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1725"><a href="https://lingshunlab.com/category/3dprinter/voron2">Voron2</a></li>
+</ul>
+</li>
+<li id="menu-item-2231" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2231"><a href="https://lingshunlab.com/category/ai">AI</a></li>
+</ul></div>
+			</div>
+		</nav>
+
+				</div><!-- #header-text-nav-container -->
+				</header><!-- #masthead -->
+				<div id="main" class="clearfix">
+				<div class="inner-wrap clearfix">
+			<div>
+		<div style="height:2em"></div>
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5370940476348866"
+				crossorigin="anonymous"></script>
+		<ins class="adsbygoogle"
+			 style="display:block; text-align:center;"
+			 data-ad-layout="in-article"
+			 data-ad-format="fluid"
+			 data-ad-client="ca-pub-5370940476348866"
+			 data-ad-slot="7569275666"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+		<div style="height:2em"></div>
+	</div>
+	<div id="primary">
+		<div id="content" class="clearfix">
+
+			
+<article id="post-981" class="post-981 post type-post status-publish format-standard has-post-thumbnail hentry category-esp32 category-book">
+	
+				<div class="featured-image">
+									<a href="https://img.lingshunlab.com/esp32-pinout-gpio-reference-cover.png" class="image-popup"><img fifu-featured="1" width="650" height="366" src="https://img.lingshunlab.com/esp32-pinout-gpio-reference-cover.png" class="attachment-colormag-featured-image size-colormag-featured-image wp-post-image" alt="" title="" title="" loading="lazy" /></a>
+								</div>
+			
+	<div class="article-content clearfix">
+
+		<div class="above-entry-meta"><span class="cat-links"><a href="https://lingshunlab.com/category/book/esp32" style="background:#a4c4be" rel="category tag">ESP32</a>&nbsp;<a href="https://lingshunlab.com/category/book" style="background:#d8a0c2" rel="category tag">指南</a>&nbsp;</span></div>
+		<header class="entry-header">
+			<h1 class="entry-title">
+				ESP32 &#8211; GPIO 引脚参考大全			</h1>
+		</header>
+
+		<div class="below-entry-meta">
+			<span class="posted-on"><a href="https://lingshunlab.com/book/esp32/esp32-pinout-reference" title="上午11:50" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2021-12-09T11:50:16+08:00">2021年12月9日</time><time class="updated" datetime="2022-07-30T17:09:14+08:00">2022年7月30日</time></a></span>
+			<span class="byline">
+				<span class="author vcard">
+					<i class="fa fa-user"></i>
+					<a class="url fn n"
+					   href="https://lingshunlab.com/author/lingshun"
+					   title="lingshun"
+					>
+						lingshun					</a>
+				</span>
+			</span>
+
+			</div>
+		<div class="entry-content clearfix">
+			<div id="ez-toc-container" class="ez-toc-v2_0_32 counter-hierarchy counter-hyphen ez-toc-light-blue">
+<p class="ez-toc-title">目录</p>
+<label for="item" class="cssicon"><i class="ez-toc-glyphicon ez-toc-icon-toggle"></i></label><label for="item" class="cssiconcheckbox">1</label><input type="checkbox" id="item" ><nav><ul class='ez-toc-list ez-toc-list-level-1'><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-1" href="#ESP32_%E6%A8%A1%E7%BB%84%E5%BC%95%E8%84%9A%E5%9B%BE" title="ESP32 模组引脚图">ESP32 模组引脚图</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-2" href="#ESP32_%E5%BC%80%E5%8F%91%E6%9D%BF%E5%BC%95%E8%84%9A%E5%9B%BE" title="ESP32 开发板引脚图">ESP32 开发板引脚图</a></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-3" href="#%E4%B8%8D%E5%BB%BA%E8%AE%AE%E4%BD%BF%E7%94%A8%E6%88%96%E9%99%90%E5%88%B6%E4%BD%BF%E7%94%A8%E7%9A%84%E5%BC%95%E8%84%9A" title="不建议使用或限制使用的引脚">不建议使用或限制使用的引脚</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-4" href="#Strapping_%E5%BC%95%E8%84%9A" title="Strapping 引脚">Strapping 引脚</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-5" href="#%E9%9B%86%E6%88%90%E5%9C%A8ESP-WROOM-32_%E7%9A%84_SPI_flash_%E5%BC%95%E8%84%9A" title="集成在ESP-WROOM-32 的 SPI flash 引脚">集成在ESP-WROOM-32 的 SPI flash 引脚</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-6" href="#%E4%BB%85%E8%BE%93%E5%85%A5%E5%BC%95%E8%84%9A" title="仅输入引脚">仅输入引脚</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-7" href="#ESP32_%E5%91%A8%E8%BE%B9%E8%AE%BE%E5%A4%87%EF%BC%9A" title="ESP32 周边设备：">ESP32 周边设备：</a><ul class='ez-toc-list-level-3'><li class='ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-8" href="#18_%E4%B8%AA%E6%A8%A1%E6%95%B0%E8%BD%AC%E6%8D%A2%E5%99%A8_ADC_%E9%80%9A%E9%81%93" title="18 个模数转换器 (ADC) 通道">18 个模数转换器 (ADC) 通道</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-9" href="#4%E7%BB%84SPI%E6%8E%A5%E5%8F%A3" title="4组SPI接口">4组SPI接口</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-10" href="#I2C_%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE" title="I2C 通讯协议">I2C 通讯协议</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-11" href="#PWM" title="PWM">PWM</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-12" href="#%E6%95%B0%E6%A8%A1%E8%BD%AC%E6%8D%A2%E5%99%A8_DAC" title="数模转换器 (DAC)">数模转换器 (DAC)</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-13" href="#I2S_%E9%AB%98%E9%80%9F%E6%95%B0%E4%BD%8D%E9%9F%B3%E8%AE%AF%E4%BC%A0%E8%BE%93%E6%A0%87%E5%87%86%E5%8D%8F%E8%AE%AE" title="I2S 高速数位音讯传输标准协议">I2S 高速数位音讯传输标准协议</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-14" href="#%E7%94%B5%E5%AE%B9%E5%BC%8F%E8%A7%A6%E6%8E%A7_GPIO" title="电容式触控 GPIO">电容式触控 GPIO</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-15" href="#RTC_GPIO" title="RTC GPIO">RTC GPIO</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-16" href="#%E4%B8%AD%E6%96%AD" title="中断">中断</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-17" href="#%E5%90%AF%E7%94%A8_EN" title="启用 (EN)">启用 (EN)</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-18" href="#GPIO_%E7%94%B5%E6%B5%81%E6%B6%88%E8%80%97" title="GPIO 电流消耗">GPIO 电流消耗</a></li><li class='ez-toc-page-1 ez-toc-heading-level-3'><a class="ez-toc-link ez-toc-heading-19" href="#ESP32_%E5%86%85%E7%BD%AE%E9%9C%8D%E5%B0%94%E6%95%88%E5%BA%94%E4%BC%A0%E6%84%9F%E5%99%A8" title="ESP32 内置霍尔效应传感器">ESP32 内置霍尔效应传感器</a></li></ul></li><li class='ez-toc-page-1 ez-toc-heading-level-2'><a class="ez-toc-link ez-toc-heading-20" href="#%E6%9C%AC%E6%96%87%E7%9A%84%E8%B5%84%E6%96%99%E5%8F%82%E8%80%83%EF%BC%9A" title="本文的资料参考：">本文的资料参考：</a></li></ul></nav></div>
+<h2><span class="ez-toc-section" id="ESP32_%E6%A8%A1%E7%BB%84%E5%BC%95%E8%84%9A%E5%9B%BE"></span>ESP32 模组引脚图<span class="ez-toc-section-end"></span></h2>
+<p><img src="https://i0.wp.com/randomnerdtutorials.com/wp-content/uploads/2018/08/esp32-pinout-chip-ESP-WROOM-32.png?quality=100&amp;strip=all&amp;ssl=1" alt="" /></p>
+</p><div class='code-block code-block-3' style='margin: 8px 0; clear: both;'>
+<div style="height:3em"></div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5370940476348866"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5370940476348866"
+     data-ad-slot="7569275666"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div style="height:3em"></div></div>
+
+<h2><span class="ez-toc-section" id="ESP32_%E5%BC%80%E5%8F%91%E6%9D%BF%E5%BC%95%E8%84%9A%E5%9B%BE"></span>ESP32 开发板引脚图<span class="ez-toc-section-end"></span></h2>
+<p><img src="https://img.lingshunlab.com/esp32-pins-detail.png?imageView2/0/q/75|watermark/2/text/TGluZ1NodW5sYWIuY29tIOWHjOmhuuWunumqjOWupA==/font/5b6u6L2v6ZuF6buR/fontsize/260/fill/IzAwMDAwMA==/dissolve/66/gravity/SouthEast/dx/10/dy/10|imageslim" alt="esp32-pins-detail" /></p>
+<div style="height:6em"></div>
+<p>重要的说在前面，在使用ESP32的时候不建议使用以下引脚，因为会在项目中出现各种无解的问题。</p>
+<div style="height:6em"></div>
+<h2><span class="ez-toc-section" id="%E4%B8%8D%E5%BB%BA%E8%AE%AE%E4%BD%BF%E7%94%A8%E6%88%96%E9%99%90%E5%88%B6%E4%BD%BF%E7%94%A8%E7%9A%84%E5%BC%95%E8%84%9A"></span>不建议使用或限制使用的引脚<span class="ez-toc-section-end"></span></h2>
+<p>不建议使用  <span style="background-color: #ff9;border-radius: 4px;padding:4px;color:red;font-weight: 800">Strapping引脚</span> ，<span style="background-color: #ff9;border-radius: 4px;padding:4px;color:red;font-weight: 800">SPI flash 引脚</span>  以及 <span style="background-color: #ff9;border-radius: 4px;padding:4px;color:red;font-weight: 800">仅输入的引脚</span></p>
+<h3><span class="ez-toc-section" id="Strapping_%E5%BC%95%E8%84%9A"></span>Strapping 引脚<span class="ez-toc-section-end"></span></h3>
+<p>GPIO 0<br />
+GPIO 2<br />
+GPIO 4<br />
+GPIO 5 (启动时必须为高电平)<br />
+GPIO 12 (启动时必须为低电平)<br />
+GPIO 15 (启动时必须为高电平)</p>
+<p>注意：</p>
+<p>在硬件上要注意使用外接模块时不能将GPIO12拉高，否则将导致ESP32启动异常。还有一些GPIO在启动或重置时其状态更改为高或者输出PWM信号，在使用时需要注意。</p>
+<h3><span class="ez-toc-section" id="%E9%9B%86%E6%88%90%E5%9C%A8ESP-WROOM-32_%E7%9A%84_SPI_flash_%E5%BC%95%E8%84%9A"></span>集成在ESP-WROOM-32 的 SPI flash 引脚<span class="ez-toc-section-end"></span></h3>
+<p>GPIO 6 到 GPIO 11 在一些 ESP32 开发板中公开。但是，这些引脚连接到 ESP-WROOM-32 芯片上的集成 SPI 闪存，不推荐用于其他用途。所以，不要在你的项目中使用这些引脚：</p>
+<p>GPIO 6 (SCK/CLK)<br />
+GPIO 7 (SDO/SD0)<br />
+GPIO 8 (SDI/SD1)<br />
+GPIO 9 (SHD/SD2)<br />
+GPIO 10 (SWP/SD3)<br />
+GPIO 11 (CSC/CMD)</p>
+<h3><span class="ez-toc-section" id="%E4%BB%85%E8%BE%93%E5%85%A5%E5%BC%95%E8%84%9A"></span>仅输入引脚<span class="ez-toc-section-end"></span></h3>
+<p>GPIO 34 到 39 是 GPI – 仅输入引脚。这些引脚没有内部上拉或下拉电阻。它们不能用作输出，因此只能将这些引脚用作输入：</p>
+<p>GPIO 34<br />
+GPIO 35<br />
+GPIO 36<br />
+GPIO 39</p>
+<p>这些引脚都是ESP32用于引导加载程序或者烧录模式/在大多数内置USB/Serial的开发板上，不需要担心这些引脚的状态，开发板会把这些引脚设置为正确的状态，以便使用烧录或启动模式。</p>
+<p>但是，如果你有外设连接到这些引脚上，当你在尝试上传新代码、用新固件烧写ESP32或重置电路板时可能会遇到麻烦，例如不明原因的错误和失败。可能是因为这些外设阻止ESP32进入正确的模式。</p>
+<p>所以以上的引脚 不建议在项目中使用。</p>
+<p>所以以上的引脚 不建议在项目中使用。</p>
+<p>所以以上的引脚 不建议在项目中使用。</p>
+<div style="height:6em"></div>
+<p>现在开始，慢慢介绍ESP32的引脚</p>
+<div style="height:6em"></div>
+<h2><span class="ez-toc-section" id="ESP32_%E5%91%A8%E8%BE%B9%E8%AE%BE%E5%A4%87%EF%BC%9A"></span>ESP32 周边设备：<span class="ez-toc-section-end"></span></h2>
+<ul>
+<li>18 个模数转换器 (ADC) 通道</li>
+<li>4 组SPI接口</li>
+<li>3 组UART接口</li>
+<li>1 组I2C接口</li>
+<li>16 个PWM输出通道</li>
+<li>2 个数模转换器 (DAC)</li>
+<li>2 个I2S接口</li>
+<li>10 个电容式感应 GPIO</li>
+<li>16 个 RTC GPIO</li>
+<li>ESP32 内置2个霍尔传感器</li>
+</ul>
+<h3><span class="ez-toc-section" id="18_%E4%B8%AA%E6%A8%A1%E6%95%B0%E8%BD%AC%E6%8D%A2%E5%99%A8_ADC_%E9%80%9A%E9%81%93"></span>18 个模数转换器 (ADC) 通道<span class="ez-toc-section-end"></span></h3>
+<p>ESP32 有 18 x 12 位 ADC 输入通道（而ESP8266 只有 1x 10 位 ADC）。这些是可用作 ADC 和相应通道的 GPIO：</p>
+<p>与某些数字外设（PWM、软件 SPI 和 I2C）不同，ADC 引脚是固定的，即您必须使用具有 ADC 功能的预定义 GPIO 引脚，并且不能在软件中对其进行配置。但是，您必须了解一些限制。</p>
+<p>尽管 ESP32 有 18 个通道的 ADC，但并非所有 ADC 引脚都可供用户使用。在 8 个 ADC1 通道中，只有 6 个可用（ACD1_CH0 和 ACD1_CH3 到 ACD1_CH7），而 ADC1_CH1 和 ADC1_CH2 不可用（即使引脚在 ESP32 开发板中没有暴露）。</p>
+<p>来到ADC2，就有些复杂了。当您使用 ESP32 的 Wi-Fi 时，Wi-Fi Driver 使用 ADC2 Peripheral。因此，只有在未启动 Wi-Fi 驱动程序时才能使用 ADC2。</p>
+<p>即使您正在使用 ADC2（假设未使用 Wi-Fi），所有引脚也并非随时可用，因为与 ADC2 相关的一些引脚用于其他重要目的（引导绑定）。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>ADC Channel</strong></th>
+<th style="text-align: left;"><strong>Pin Name</strong></th>
+<th><strong>GPIO Pin</strong></th>
+<th><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ACD1_CH0</td>
+<td style="text-align: left;">A0</td>
+<td>36</td>
+<td><span style="background-color: #090;border-radius: 4px;padding:4px;color:white;font-weight: 800">可用</span> / 内置霍尔传感器</td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD1_CH1</td>
+<td style="text-align: left;">\</td>
+<td>37</td>
+<td>不可用</td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD1_CH2</td>
+<td style="text-align: left;">\</td>
+<td>38</td>
+<td>不可用</td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD1_CH3</td>
+<td style="text-align: left;">A3</td>
+<td>39</td>
+<td><span style="background-color: #090;border-radius: 4px;padding:4px;color:white;font-weight: 800">可用</span> / 内置霍尔传感器</td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD1_CH4</td>
+<td style="text-align: left;">A4</td>
+<td>32</td>
+<td><span style="background-color: #090;border-radius: 4px;padding:4px;color:white;font-weight: 800">可用</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD1_CH5</td>
+<td style="text-align: left;">A5</td>
+<td>33</td>
+<td><span style="background-color: #090;border-radius: 4px;padding:4px;color:white;font-weight: 800">可用</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD1_CH6</td>
+<td style="text-align: left;">A6</td>
+<td>34</td>
+<td><span style="background-color: #090;border-radius: 4px;padding:4px;color:white;font-weight: 800">可用</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD1_CH7</td>
+<td style="text-align: left;">A7</td>
+<td>35</td>
+<td><span style="background-color: #090;border-radius: 4px;padding:4px;color:white;font-weight: 800">可用</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD2_CH0</td>
+<td style="text-align: left;">A10</td>
+<td>4</td>
+<td>启动WIFI时不可用</td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD2_CH1</td>
+<td style="text-align: left;">A11</td>
+<td>0</td>
+<td>不可用 / 用于BOOT</td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD2_CH2</td>
+<td style="text-align: left;">A12</td>
+<td>2</td>
+<td>用于BOOT Strapping</td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD2_CH3</td>
+<td style="text-align: left;">A13</td>
+<td>15</td>
+<td>用于BOOT Strapping</td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD2_CH4</td>
+<td style="text-align: left;">A14</td>
+<td>13</td>
+<td>启动WIFI时不可用</td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD2_CH5</td>
+<td style="text-align: left;">A15</td>
+<td>12</td>
+<td>启动WIFI时不可用</td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD2_CH6</td>
+<td style="text-align: left;">A16</td>
+<td>14</td>
+<td>启动WIFI时不可用</td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD2_CH7</td>
+<td style="text-align: left;">A17</td>
+<td>27</td>
+<td>启动WIFI时不可用</td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD2_CH8</td>
+<td style="text-align: left;">A18</td>
+<td>25</td>
+<td>启动WIFI时不可用</td>
+</tr>
+<tr>
+<td style="text-align: left;">ACD2_CH9</td>
+<td style="text-align: left;">A19</td>
+<td>26</td>
+<td>启动WIFI时不可用</td>
+</tr>
+</tbody>
+</table>
+<p>ADC 输入通道具有 12 位分辨率。这意味着您可以获得范围从 0 到 4095 的模拟读数，其中 0 对应于 0V，4095 对应于 3.3V。您还可以在代码和 ADC 范围上设置通道的分辨率。</p>
+<p>ESP32 ADC 引脚没有线性行为。您可能无法区分 0 和 0.1V，或 3.2 和 3.3V。使用 ADC 引脚时需要牢记这一点。您将获得类似于下图所示的行为。</p>
+<h3><span class="ez-toc-section" id="4%E7%BB%84SPI%E6%8E%A5%E5%8F%A3"></span>4组SPI接口<span class="ez-toc-section-end"></span></h3>
+<p>默认情况下，可以用的SPI的引脚映射是：</p>
+<table>
+<thead>
+<tr>
+<th><strong>SPI</strong></th>
+<th><strong>MOSI</strong></th>
+<th><strong>MISO</strong></th>
+<th><strong>CLK</strong></th>
+<th><strong>CS</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VSPI</strong>（SPI3）</td>
+<td>GPIO 23</td>
+<td>GPIO 19</td>
+<td>GPIO 18</td>
+<td>GPIO 5</td>
+</tr>
+<tr>
+<td><strong>HSPI</strong>（SPI2）</td>
+<td>GPIO 13</td>
+<td>GPIO 12</td>
+<td>GPIO 14</td>
+<td>GPIO 15</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SPI（Serial Peripheral Interface）</strong> 协议是由摩托罗拉公司提出的通讯协议，即串行外围设备接口，是一种高速全双工的通信总线。它被广泛地使用在 ADC、LCD 等设备与 MCU 间，要求通讯速率较高的场合。</p>
+<p>芯片的管脚上只占用四根线。<br />
+MISO： 主器件数据输出，从器件数据输入。<br />
+MOSI：主器件数据输入，从器件数据输出。<br />
+SCK： 时钟信号，由主设备控制发出。<br />
+NSS（CS）： 从设备选择信号，由主设备控制。当NSS为低电平则选中从器件。</p>
+<p>ESP32集成了<code>4组SPI</code>外设。</p>
+<ul>
+<li><code>SPI0</code>和<code>SPI1</code>在内部用于访问ESP32所连接的闪存。两个控制器共享相同的SPI总线信号，并且有一个仲裁器来确定哪个可以访问该总线。</li>
+<li><code>SPI2</code>和<code>SPI3</code>是<strong>通用SPI控制器</strong>，有时分别称为HSPI和VSPI。它们向用户开放。SPI2和SPI3具有独立的总线信号，分别具有相同的名称。每条总线具有3条CS线，最多能控制6个SPI从设备。</li>
+</ul>
+<p>需要注意的是，HSPI和VSPI并不是网友们认为的high-speed SPI 和Very High-speed SPI，这是SPI和HSPI、VSPI是一样的，只不过是换个名字用于区分，SPI相当于SPI0或SPI1，HSPI相当于SPI2，VSPI相当于SPI3。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190822134322546.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pkc25wZ3hq,size_16,color_FFFFFF,t_70" alt="" /></p>
+<h3><span class="ez-toc-section" id="I2C_%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE"></span>I2C 通讯协议<span class="ez-toc-section-end"></span></h3>
+<p>ESP32默认的I2C引脚为：</p>
+<ul>
+<li>GPIO 21 （SDA）</li>
+<li>GPIO 22 （SCL）</li>
+</ul>
+<p>其实在ESP32中任何引脚都可以定义为SDA或SCL，但不到逼不得已不推荐这么做。</p>
+<p>可在Arduino IDE 中使用以下语句配置其它引脚为SDA或SCL</p>
+<pre><code class="language-C">Wire.begin(SDA, SCL);</code></pre>
+<h3><span class="ez-toc-section" id="PWM"></span>PWM<span class="ez-toc-section-end"></span></h3>
+<p>ESP32 PWM 控制器主要设计用于控制 LED 的强度，但它也可用于生成其他目的的 PWM 信号。它有16个通道，可以产生独立的PWM波形。</p>
+<p>ESP32 PWM 控制器有 8 个高速通道和 8 个低速通道，我们总共有 16 个通道。它们根据速度分为两组。每组有 4 个定时器/8 个通道。这意味着每两个通道共享同一个定时器。因此，我们无法独立控制每对通道的 PWM 频率。</p>
+<p><img src="https://deepbluembedded.com/wp-content/uploads/2021/04/ESP32-PWM-Channels-Pins-PWM-Tutorial-With-Examples.png?ezimgfmt=ng:webp/ngcb6" alt="" /></p>
+<p>所有可以作为输出的引脚都可以用作 PWM 引脚（GPIO 34 到 39 不能产生 PWM）。</p>
+<p>要设置 PWM 信号，您需要在代码中定义这些参数：</p>
+<ul>
+<li>信号的频率；</li>
+<li>占空比;</li>
+<li>脉宽调制通道；</li>
+<li>要输出信号的 GPIO。</li>
+</ul>
+<h3><span class="ez-toc-section" id="%E6%95%B0%E6%A8%A1%E8%BD%AC%E6%8D%A2%E5%99%A8_DAC"></span>数模转换器 (DAC)<span class="ez-toc-section-end"></span></h3>
+<p>ESP32 上有 2 x 8 位 DAC 通道，用于将数字信号转换为模拟电压信号输出。这些是 DAC 通道：</p>
+<ul>
+<li>DAC1 (GPIO25)</li>
+<li>DAC2 (GPIO26)</li>
+</ul>
+<h3><span class="ez-toc-section" id="I2S_%E9%AB%98%E9%80%9F%E6%95%B0%E4%BD%8D%E9%9F%B3%E8%AE%AF%E4%BC%A0%E8%BE%93%E6%A0%87%E5%87%86%E5%8D%8F%E8%AE%AE"></span>I2S 高速数位音讯传输标准协议<span class="ez-toc-section-end"></span></h3>
+<p>在ESP32引脚上实际是标记为 DAC1 和 DAC2</p>
+<ul>
+<li>GPIO 25 </li>
+<li>GPIO 26</li>
+</ul>
+<h3><span class="ez-toc-section" id="%E7%94%B5%E5%AE%B9%E5%BC%8F%E8%A7%A6%E6%8E%A7_GPIO"></span>电容式触控 GPIO<span class="ez-toc-section-end"></span></h3>
+<p>ESP32 有 10 个内部电容式触摸传感器。它们可以感知任何带电荷的物体的变化，比如人体皮肤。因此，他们可以检测用手指触摸 GPIO 时引起的变化。这些引脚可以轻松集成到电容式焊盘中并取代机械按钮。电容式触控引脚还可用于将 ESP32 从深度睡眠中唤醒</p>
+<p>这些内部触摸传感器连接到这些 GPIO：</p>
+<ul>
+<li>T0 (GPIO 4)</li>
+<li>T1 (GPIO 0)</li>
+<li>T2 (GPIO 2)</li>
+<li>T3 (GPIO 15)</li>
+<li>T4 (GPIO 13)</li>
+<li>T5 (GPIO 12)</li>
+<li>T6 (GPIO 14)</li>
+<li>T7 (GPIO 27)</li>
+<li>T8 (GPIO 33)</li>
+<li>T9 (GPIO 32)</li>
+</ul>
+<h3><span class="ez-toc-section" id="RTC_GPIO"></span>RTC GPIO<span class="ez-toc-section-end"></span></h3>
+<p>ESP32 上有 RTC GPIO 支持。当 ESP32 处于深度睡眠时，可以使用路由到 RTC 低功耗子系统的 GPIO。当超低功耗 (ULP) 协处理器运行时，这些 RTC GPIO 可用于将 ESP32 从深度睡眠中唤醒。以下 GPIO 可用作外部唤醒源</p>
+<ul>
+<li>RTC_GPIO0 (GPIO36)</li>
+<li>RTC_GPIO3 (GPIO39)</li>
+<li>RTC_GPIO4 (GPIO34)</li>
+<li>RTC_GPIO5 (GPIO35)</li>
+<li>RTC_GPIO6 (GPIO25)</li>
+<li>RTC_GPIO7 (GPIO26)</li>
+<li>RTC_GPIO8 (GPIO33)</li>
+<li>RTC_GPIO9 (GPIO32)</li>
+<li>RTC_GPIO10 (GPIO4)</li>
+<li>RTC_GPIO11 (GPIO0)</li>
+<li>RTC_GPIO12 (GPIO2)</li>
+<li>RTC_GPIO13 (GPIO15)</li>
+<li>RTC_GPIO14 (GPIO13)</li>
+<li>RTC_GPIO15 (GPIO12)</li>
+<li>RTC_GPIO16 (GPIO14)</li>
+<li>RTC_GPIO17 (GPIO27)</li>
+</ul>
+<h3><span class="ez-toc-section" id="%E4%B8%AD%E6%96%AD"></span>中断<span class="ez-toc-section-end"></span></h3>
+<p>所有 GPIO 都可以配置为中断。</p>
+<h3><span class="ez-toc-section" id="%E5%90%AF%E7%94%A8_EN"></span>启用 (EN)<span class="ez-toc-section-end"></span></h3>
+<p>启用 (EN) 是 3.3V 稳压器的启用引脚。它被拉高，因此接地以禁用 3.3V 稳压器。例如，这意味着您可以使用连接到按钮的此引脚来重新启动 ESP32。</p>
+<h3><span class="ez-toc-section" id="GPIO_%E7%94%B5%E6%B5%81%E6%B6%88%E8%80%97"></span>GPIO 电流消耗<span class="ez-toc-section-end"></span></h3>
+<p>根据 ESP32 数据表中的“推荐操作条件”部分，每个 GPIO 的绝对最大电流消耗为 40mA。</p>
+<h3><span class="ez-toc-section" id="ESP32_%E5%86%85%E7%BD%AE%E9%9C%8D%E5%B0%94%E6%95%88%E5%BA%94%E4%BC%A0%E6%84%9F%E5%99%A8"></span>ESP32 内置霍尔效应传感器<span class="ez-toc-section-end"></span></h3>
+<p>ESP32 还具有内置霍尔效应传感器，可检测周围磁场的变化。</p>
+<ul>
+<li>GPIO 36</li>
+<li>GPIO 39</li>
+</ul>
+<div style="height:6em"></div>
+<h2><span class="ez-toc-section" id="%E6%9C%AC%E6%96%87%E7%9A%84%E8%B5%84%E6%96%99%E5%8F%82%E8%80%83%EF%BC%9A"></span>本文的资料参考：<span class="ez-toc-section-end"></span></h2>
+<p><a href="https://randomnerdtutorials.com/esp32-pinout-reference-gpios/">https://randomnerdtutorials.com/esp32-pinout-reference-gpios/</a><br />
+<a href="https://deepbluembedded.com/esp32-pwm-tutorial-examples-analogwrite-arduino/">https://deepbluembedded.com/esp32-pwm-tutorial-examples-analogwrite-arduino/</a><br />
+<a href="https://www.jianshu.com/p/6fb40b3d0c6d">https://www.jianshu.com/p/6fb40b3d0c6d</a><br />
+<a href="https://blog.csdn.net/jdsnpgxj/article/details/100013357">https://blog.csdn.net/jdsnpgxj/article/details/100013357</a></p>
+<!-- AI CONTENT END 2 -->
+		</div>
+
+	</div>
+
+	</article>
+
+		</div><!-- #content -->
+		<div>
+			<div style="height:2em"></div>
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5370940476348866"
+				 crossorigin="anonymous"></script>
+			<ins class="adsbygoogle"
+				 style="display:block; text-align:center;"
+				 data-ad-layout="in-article"
+				 data-ad-format="fluid"
+				 data-ad-client="ca-pub-5370940476348866"
+				 data-ad-slot="7569275666"></ins>
+			<script>
+				 (adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+			<div style="height:2em"></div>
+		</div>
+
+		
+		<ul class="default-wp-page clearfix">
+			<li class="previous"><a href="https://lingshunlab.com/book/jetson-nano/jetson-nano-install-octoprint" rel="prev"><span class="meta-nav">&larr;</span> Jetson Nano 上安装 OctoPrint</a></li>
+			<li class="next"><a href="https://lingshunlab.com/book/arduino/arduino-use-ds3231-read-time-and-set-time" rel="next">Arduino Uno 使用DS3231高精度时钟模块实现获取时间和设置时间 <span class="meta-nav">&rarr;</span></a></li>
+		</ul>
+
+		
+	<div class="related-posts-wrapper">
+
+		<h4 class="related-posts-main-title">
+			<i class="fa fa-thumbs-up"></i><span>You May Also Like</span>
+		</h4>
+
+		<div class="related-posts clearfix">
+
+							<div class="single-related-posts">
+
+											<div class="related-posts-thumbnail">
+							<a href="https://lingshunlab.com/book/jetson-nano/hello-ai-jetson-nano-use-detectnet-locating-objects-in-notebook" title="《Hello AI》系列：Jetson Nano在Jupyterlab中使用DetectNet 定位物体(Python)">
+								<img fifu-featured="1" width="364" height="205" src="https://img.lingshunlab.com/hello-ai-jetson-nano-use-detectnet-locating-objects-in-notebook-cover-c.png" class="attachment-colormag-featured-post-medium size-colormag-featured-post-medium wp-post-image" alt="" title="" title="" loading="lazy" />							</a>
+						</div>
+					
+					<div class="article-content">
+						<h3 class="entry-title">
+							<a href="https://lingshunlab.com/book/jetson-nano/hello-ai-jetson-nano-use-detectnet-locating-objects-in-notebook" rel="bookmark" title="《Hello AI》系列：Jetson Nano在Jupyterlab中使用DetectNet 定位物体(Python)">
+								《Hello AI》系列：Jetson Nano在Jupyterlab中使用DetectNet 定位物体(Python)							</a>
+						</h3><!--/.post-title-->
+
+						<div class="below-entry-meta">
+			<span class="posted-on"><a href="https://lingshunlab.com/book/jetson-nano/hello-ai-jetson-nano-use-detectnet-locating-objects-in-notebook" title="下午10:44" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2023-08-10T22:44:45+08:00">2023年8月10日</time><time class="updated" datetime="2023-08-10T22:49:35+08:00">2023年8月10日</time></a></span>
+			<span class="byline">
+				<span class="author vcard">
+					<i class="fa fa-user"></i>
+					<a class="url fn n"
+					   href="https://lingshunlab.com/author/lingshun"
+					   title="lingshun"
+					>
+						lingshun					</a>
+				</span>
+			</span>
+
+			</div>					</div>
+
+				</div><!--/.related-->
+							<div class="single-related-posts">
+
+											<div class="related-posts-thumbnail">
+							<a href="https://lingshunlab.com/book/arduino/arduiuo-use-2point4-inch-tft-lcd-display" title="Arduino 2.4寸直插TFT彩色液晶触摸屏模块（ILI9431）">
+								<img fifu-featured="1" width="364" height="205" src="https://img.lingshunlab.com/arduiuo-use-2point4-inch-tft-lcd-display-conver.png" class="attachment-colormag-featured-post-medium size-colormag-featured-post-medium wp-post-image" alt="" title="" title="" loading="lazy" />							</a>
+						</div>
+					
+					<div class="article-content">
+						<h3 class="entry-title">
+							<a href="https://lingshunlab.com/book/arduino/arduiuo-use-2point4-inch-tft-lcd-display" rel="bookmark" title="Arduino 2.4寸直插TFT彩色液晶触摸屏模块（ILI9431）">
+								Arduino 2.4寸直插TFT彩色液晶触摸屏模块（ILI9431）							</a>
+						</h3><!--/.post-title-->
+
+						<div class="below-entry-meta">
+			<span class="posted-on"><a href="https://lingshunlab.com/book/arduino/arduiuo-use-2point4-inch-tft-lcd-display" title="下午1:43" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2022-03-13T13:43:40+08:00">2022年3月13日</time><time class="updated" datetime="2022-07-30T17:19:05+08:00">2022年7月30日</time></a></span>
+			<span class="byline">
+				<span class="author vcard">
+					<i class="fa fa-user"></i>
+					<a class="url fn n"
+					   href="https://lingshunlab.com/author/lingshun"
+					   title="lingshun"
+					>
+						lingshun					</a>
+				</span>
+			</span>
+
+			</div>					</div>
+
+				</div><!--/.related-->
+							<div class="single-related-posts">
+
+											<div class="related-posts-thumbnail">
+							<a href="https://lingshunlab.com/book/esp32/esp32-web-server-and-read-get-parameters" title="ESP32 简单的WEB Server和GET参数读取示例">
+								<img fifu-featured="1" width="364" height="205" src="https://img.lingshunlab.com/esp32-web-server-and-read-get-parameters-cover.png" class="attachment-colormag-featured-post-medium size-colormag-featured-post-medium wp-post-image" alt="" title="" title="" loading="lazy" />							</a>
+						</div>
+					
+					<div class="article-content">
+						<h3 class="entry-title">
+							<a href="https://lingshunlab.com/book/esp32/esp32-web-server-and-read-get-parameters" rel="bookmark" title="ESP32 简单的WEB Server和GET参数读取示例">
+								ESP32 简单的WEB Server和GET参数读取示例							</a>
+						</h3><!--/.post-title-->
+
+						<div class="below-entry-meta">
+			<span class="posted-on"><a href="https://lingshunlab.com/book/esp32/esp32-web-server-and-read-get-parameters" title="下午4:51" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2023-06-16T16:51:43+08:00">2023年6月16日</time><time class="updated" datetime="2023-06-26T11:37:06+08:00">2023年6月26日</time></a></span>
+			<span class="byline">
+				<span class="author vcard">
+					<i class="fa fa-user"></i>
+					<a class="url fn n"
+					   href="https://lingshunlab.com/author/lingshun"
+					   title="lingshun"
+					>
+						lingshun					</a>
+				</span>
+			</span>
+
+			</div>					</div>
+
+				</div><!--/.related-->
+			
+		</div><!--/.post-related-->
+
+	</div>
+
+	
+	</div><!-- #primary -->
+
+
+<div id="secondary">
+	
+	<aside id="colormag_featured_posts_vertical_widget-1" class="widget widget_featured_posts widget_featured_posts_vertical widget_featured_meta clearfix">
+		<h3 class="widget-title" style="border-bottom-color:#6ac4c2;"><span style="background-color:#6ac4c2;">News</span></h3><div class="first-post">
+			<div class="single-article clearfix">
+				<figure><a href="https://lingshunlab.com/book/arduino/arduino-use-mcp2515-canbus" title="Arduino 使用MCP2515模块进行CANBUS通讯"><img fifu-featured="1" width="364" height="205" src="https://img.lingshunlab.com/arduino-use-mcp2515-canbus-cover-c.png" class="attachment-colormag-featured-post-medium size-colormag-featured-post-medium wp-post-image" alt="" title="" title="" loading="lazy" title="Arduino 使用MCP2515模块进行CANBUS通讯" /></a></figure>
+				<div class="article-content">
+					<div class="above-entry-meta"><span class="cat-links"><a href="https://lingshunlab.com/category/book/arduino" style="background:#6ac4c2" rel="category tag">Arduino</a>&nbsp;<a href="https://lingshunlab.com/category/book" style="background:#d8a0c2" rel="category tag">指南</a>&nbsp;</span></div>		<h3 class="entry-title">
+			<a href="https://lingshunlab.com/book/arduino/arduino-use-mcp2515-canbus" title="Arduino 使用MCP2515模块进行CANBUS通讯">
+				Arduino 使用MCP2515模块进行CANBUS通讯			</a>
+		</h3>
+		<div class="below-entry-meta"><span class="posted-on"><a href="https://lingshunlab.com/book/arduino/arduino-use-mcp2515-canbus" title="下午3:39" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2023-08-10T15:39:59+08:00">2023年8月10日</time><time class="updated" datetime="2023-08-10T15:46:10+08:00">2023年8月10日</time></a></span>
+		<span class="byline">
+			<span class="author vcard">
+				<i class="fa fa-user"></i>
+				<a class="url fn n"
+				   href="https://lingshunlab.com/author/lingshun"
+				   title="lingshun"
+				>
+					lingshun				</a>
+			</span>
+		</span>
+
+		
+		</div>
+											<div class="entry-content">
+							<p>使用Arduino Uno + MCP2515 模块和 Arduino Nano + MCP2515 模块 进行CANBUS通讯。</p>
+						</div>
+									</div>
+
+			</div>
+			</div><div class="following-post">
+			<div class="single-article clearfix">
+				<figure><a href="https://lingshunlab.com/book/arduino/measuring-distance-with-the-hc-sr04-ultrasonic-sensor-and-arduino-uno" title="Arduino Uno 超声波传感器HC-SR04测距"><img fifu-featured="1" width="130" height="73" src="https://img.lingshunlab.com/measuring-distance-with-the-hc-sr04-ultrasonic-sensor-and-arduino-uno-cover-c.png" class="attachment-colormag-featured-post-small size-colormag-featured-post-small wp-post-image" alt="" title="" title="" loading="lazy" title="Arduino Uno 超声波传感器HC-SR04测距" /></a></figure>
+				<div class="article-content">
+					<div class="above-entry-meta"><span class="cat-links"><a href="https://lingshunlab.com/category/book/arduino" style="background:#6ac4c2" rel="category tag">Arduino</a>&nbsp;</span></div>		<h3 class="entry-title">
+			<a href="https://lingshunlab.com/book/arduino/measuring-distance-with-the-hc-sr04-ultrasonic-sensor-and-arduino-uno" title="Arduino Uno 超声波传感器HC-SR04测距">
+				Arduino Uno 超声波传感器HC-SR04测距			</a>
+		</h3>
+		<div class="below-entry-meta"><span class="posted-on"><a href="https://lingshunlab.com/book/arduino/measuring-distance-with-the-hc-sr04-ultrasonic-sensor-and-arduino-uno" title="下午7:22" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2023-07-19T19:22:03+08:00">2023年7月19日</time><time class="updated" datetime="2023-07-20T07:11:12+08:00">2023年7月20日</time></a></span>
+		<span class="byline">
+			<span class="author vcard">
+				<i class="fa fa-user"></i>
+				<a class="url fn n"
+				   href="https://lingshunlab.com/author/lingshun"
+				   title="lingshun"
+				>
+					lingshun				</a>
+			</span>
+		</span>
+
+		
+		</div>
+									</div>
+
+			</div>
+			
+			<div class="single-article clearfix">
+				<figure><a href="https://lingshunlab.com/book/arduino/esp32-power-failure-data-storage-eeprom-read-and-write" title="ESP32 断电数据保存 EEPROM数据读取和写入"><img fifu-featured="1" width="130" height="73" src="https://img.lingshunlab.com/esp32-power-failure-data-storage-eeprom-read-and-write-cover.png" class="attachment-colormag-featured-post-small size-colormag-featured-post-small wp-post-image" alt="" title="" title="" loading="lazy" title="ESP32 断电数据保存 EEPROM数据读取和写入" /></a></figure>
+				<div class="article-content">
+					<div class="above-entry-meta"><span class="cat-links"><a href="https://lingshunlab.com/category/book/arduino" style="background:#6ac4c2" rel="category tag">Arduino</a>&nbsp;<a href="https://lingshunlab.com/category/book/esp32" style="background:#a4c4be" rel="category tag">ESP32</a>&nbsp;<a href="https://lingshunlab.com/category/book" style="background:#d8a0c2" rel="category tag">指南</a>&nbsp;</span></div>		<h3 class="entry-title">
+			<a href="https://lingshunlab.com/book/arduino/esp32-power-failure-data-storage-eeprom-read-and-write" title="ESP32 断电数据保存 EEPROM数据读取和写入">
+				ESP32 断电数据保存 EEPROM数据读取和写入			</a>
+		</h3>
+		<div class="below-entry-meta"><span class="posted-on"><a href="https://lingshunlab.com/book/arduino/esp32-power-failure-data-storage-eeprom-read-and-write" title="下午9:20" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2023-02-20T21:20:27+08:00">2023年2月20日</time><time class="updated" datetime="2023-02-20T21:45:42+08:00">2023年2月20日</time></a></span>
+		<span class="byline">
+			<span class="author vcard">
+				<i class="fa fa-user"></i>
+				<a class="url fn n"
+				   href="https://lingshunlab.com/author/lingshun"
+				   title="lingshun"
+				>
+					lingshun				</a>
+			</span>
+		</span>
+
+		
+		</div>
+									</div>
+
+			</div>
+			
+			<div class="single-article clearfix">
+				<figure><a href="https://lingshunlab.com/book/arduino/arduino-uno-use-2204m-drive-step-motor" title="Arduino Uno 使用2204M驱动器驱动步进电机"><img fifu-featured="1" width="130" height="73" src="https://img.lingshunlab.com/arduino-uno-use-2204m-drive-step-motor-cover.png" class="attachment-colormag-featured-post-small size-colormag-featured-post-small wp-post-image" alt="" title="" title="" loading="lazy" title="Arduino Uno 使用2204M驱动器驱动步进电机" /></a></figure>
+				<div class="article-content">
+					<div class="above-entry-meta"><span class="cat-links"><a href="https://lingshunlab.com/category/book/arduino" style="background:#6ac4c2" rel="category tag">Arduino</a>&nbsp;<a href="https://lingshunlab.com/category/book" style="background:#d8a0c2" rel="category tag">指南</a>&nbsp;</span></div>		<h3 class="entry-title">
+			<a href="https://lingshunlab.com/book/arduino/arduino-uno-use-2204m-drive-step-motor" title="Arduino Uno 使用2204M驱动器驱动步进电机">
+				Arduino Uno 使用2204M驱动器驱动步进电机			</a>
+		</h3>
+		<div class="below-entry-meta"><span class="posted-on"><a href="https://lingshunlab.com/book/arduino/arduino-uno-use-2204m-drive-step-motor" title="下午1:24" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2022-12-10T13:24:40+08:00">2022年12月10日</time><time class="updated" datetime="2022-12-10T13:31:23+08:00">2022年12月10日</time></a></span>
+		<span class="byline">
+			<span class="author vcard">
+				<i class="fa fa-user"></i>
+				<a class="url fn n"
+				   href="https://lingshunlab.com/author/lingshun"
+				   title="lingshun"
+				>
+					lingshun				</a>
+			</span>
+		</span>
+
+		
+		</div>
+									</div>
+
+			</div>
+			</div></aside><aside id="custom_html-3" class="widget_text widget widget_custom_html clearfix"><div class="textwidget custom-html-widget"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5370940476348866"
+     crossorigin="anonymous"></script>
+<!-- 侧边栏 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5370940476348866"
+     data-ad-slot="6912129103"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></aside><aside id="colormag_featured_posts_vertical_widget-11" class="widget widget_featured_posts widget_featured_posts_vertical widget_featured_meta clearfix">
+		<div class="first-post">
+			<div class="single-article clearfix">
+				
+				<div class="article-content">
+					<div class="above-entry-meta"><span class="cat-links"><a href="https://lingshunlab.com/category/ai"  rel="category tag">AI</a>&nbsp;</span></div>		<h3 class="entry-title">
+			<a href="https://lingshunlab.com/ai/ai-online-matting-image" title="AI在线抠图">
+				AI在线抠图			</a>
+		</h3>
+		<div class="below-entry-meta"><span class="posted-on"><a href="https://lingshunlab.com/ai/ai-online-matting-image" title="下午4:50" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2023-08-04T16:50:35+08:00">2023年8月4日</time><time class="updated" datetime="2023-08-05T11:03:43+08:00">2023年8月5日</time></a></span>
+		<span class="byline">
+			<span class="author vcard">
+				<i class="fa fa-user"></i>
+				<a class="url fn n"
+				   href="https://lingshunlab.com/author/lingshun"
+				   title="lingshun"
+				>
+					lingshun				</a>
+			</span>
+		</span>
+
+		
+		</div>
+											<div class="entry-content">
+							<p>此凌顺实验室（lingshunlab.com）分享记录一些在线的AI抠图网站</p>
+						</div>
+									</div>
+
+			</div>
+			</div></aside>
+	</div>
+		</div><!-- .inner-wrap -->
+				</div><!-- #main -->
+				<footer id="colophon" class="clearfix ">
+		
+<div class="footer-widgets-wrapper">
+	<div class="inner-wrap">
+		<div class="footer-widgets-area clearfix">
+			<div class="tg-footer-main-widget">
+				<div class="tg-first-footer-widget">
+					<aside id="custom_html-11" class="widget_text widget widget_custom_html clearfix"><h3 class="widget-title"><span>关于本站</span></h3><div class="textwidget custom-html-widget"><a title="LingShunLAB" href="https://lingshunlab.com"><img alt="LingShunLAB" src="https://lingshunlab.com/wp-content/uploads/2022/07/logo-1-s.png"></a><br/>分享一些开发过程中的遇到的问题，方便查阅，如有错误，请关注公众号指出指导，万分感谢。</div></aside>				</div>
+			</div>
+
+			<div class="tg-footer-other-widgets">
+				<div class="tg-second-footer-widget">
+					<aside id="custom_html-19" class="widget_text widget widget_custom_html clearfix"><div class="textwidget custom-html-widget">友情链接
+<br>
+<div><a href="https://makeronsite.com/">创客出手</a></div>
+<div><a href="https://beets3d.cn/">红菜3D</a></div></div></aside>				</div>
+				<div class="tg-third-footer-widget">
+									</div>
+				<div class="tg-fourth-footer-widget">
+					<aside id="custom_html-17" class="widget_text widget widget_custom_html clearfix"><div class="textwidget custom-html-widget"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5370940476348866"
+     crossorigin="anonymous"></script>
+<!-- 横幅广告 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5370940476348866"
+     data-ad-slot="7829377539"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></aside>				</div>
+			</div>
+		</div>
+	</div>
+</div>
+		<div class="footer-socket-wrapper clearfix">
+			<div class="inner-wrap">
+				<div class="footer-socket-area">
+		
+		<div class="footer-socket-right-section">
+					</div>
+
+				<div class="footer-socket-left-section">
+			<div class="copyright">Copyright &copy; 2023 <a href="https://lingshunlab.com/" title="凌顺实验室" ><span>凌顺实验室</span></a>. All rights reserved.<br>Theme: <a href="https://themegrill.com/themes/colormag" target="_blank" title="ColorMag" rel="nofollow"><span>ColorMag</span></a> by ThemeGrill. Powered by <a href="https://wordpress.org" target="_blank" title="WordPress" rel="nofollow"><span>WordPress</span></a>.</div><div><a href="http://beian.miit.gov.cn" target="_blank"> 粤ICP备18158987号-1</a></div>		</div>
+				</div><!-- .footer-socket-area -->
+					</div><!-- .inner-wrap -->
+		</div><!-- .footer-socket-wrapper -->
+				</footer><!-- #colophon -->
+				<a href="#masthead" id="scroll-up"><i class="fa fa-chevron-up"></i></a>
+				</div><!-- #page -->
+			<script type="text/javascript">
+		var c = document.body.className;
+		c = c.replace( /everest-forms-no-js/, 'everest-forms-js' );
+		document.body.className = c;
+	</script>
+	<script type='text/javascript' src='https://lingshunlab.com/wp-content/themes/colormag/js/jquery.bxslider.min.js?ver=2.1.3' id='colormag-bxslider-js'></script>
+<script type='text/javascript' src='https://lingshunlab.com/wp-content/themes/colormag/js/sticky/jquery.sticky.min.js?ver=2.1.3' id='colormag-sticky-menu-js'></script>
+<script type='text/javascript' src='https://lingshunlab.com/wp-content/themes/colormag/js/news-ticker/jquery.newsTicker.min.js?ver=2.1.3' id='colormag-news-ticker-js'></script>
+<script type='text/javascript' src='https://lingshunlab.com/wp-content/themes/colormag/js/magnific-popup/jquery.magnific-popup.min.js?ver=2.1.3' id='colormag-featured-image-popup-js'></script>
+<script type='text/javascript' src='https://lingshunlab.com/wp-content/themes/colormag/js/navigation.min.js?ver=2.1.3' id='colormag-navigation-js'></script>
+<script type='text/javascript' src='https://lingshunlab.com/wp-content/themes/colormag/js/fitvids/jquery.fitvids.min.js?ver=2.1.3' id='colormag-fitvids-js'></script>
+<script type='text/javascript' src='https://lingshunlab.com/wp-content/themes/colormag/js/skip-link-focus-fix.min.js?ver=2.1.3' id='colormag-skip-link-focus-fix-js'></script>
+<script type='text/javascript' src='https://lingshunlab.com/wp-content/themes/colormag/js/colormag-custom.min.js?ver=2.1.3' id='colormag-custom-js'></script>
+<script type='text/javascript' src='https://lingshunlab.com/wp-includes/js/wp-embed.min.js?ver=5.7.2' id='wp-embed-js'></script>
+<script type='text/javascript' id='fifu-image-js-js-extra'>
+/* <![CDATA[ */
+var fifuImageVars = {"fifu_lazy":"","fifu_woo_lbox_enabled":"1","fifu_woo_zoom":"inline","fifu_is_product":"","fifu_is_flatsome_active":"","fifu_rest_url":"https:\/\/lingshunlab.com\/wp-json\/","fifu_nonce":"50d58e83b4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://lingshunlab.com/wp-content/plugins/featured-image-from-url/includes/html/js/image.js?ver=4.0.4' id='fifu-image-js-js'></script>
+  <script id="module-highlight-js"> (function($) { $(function() { $("pre code").each(function(i, e) { var thisclass = $(this).attr("class"); if (typeof thisclass !== "undefined") { if ( thisclass.indexOf("katex") === -1 && thisclass.indexOf("mermaid") === -1 && thisclass.indexOf("seq") === -1 && thisclass.indexOf("flow") === -1 ) { if (typeof hljs !== "undefined") { $(this).closest("pre").addClass("hljs"); hljs.highlightBlock(e); } else { console.log("%c WP Githuber MD %c You have enabled highlight.js modules already, but you have to update this post to take effect, identifying which file should be loaded.\nGithuber MD does not load a whole-fat-packed file for every post.", "background: #222; color: #bada55", "color: #637338"); } } } }); }); })(jQuery); </script> 
+</body>
+</html>
