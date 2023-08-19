@@ -1,3 +1,6 @@
+#include "led_task.h"
+#include "wifi_mqtt_task.h"
+#include "remote_control_task.h"
+#include "version_task.h"
 #include "imu_task.h"
 #include "fly_control_task.h"
-#include "led_task.h"

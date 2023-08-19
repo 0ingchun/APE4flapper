@@ -1,5 +1,17 @@
 #include <imu_task.h>
 
+/*
+ESP32-S3 的 I2C0 和 I2C1 接口可以使用不同的 GPIO 引脚。以下是它们的默认引脚配置：
+
+I2C0：
+SDA0 引脚：GPIO 8
+SCL0 引脚：GPIO 9
+
+I2C1：
+SDA1 引脚：GPIO 18
+SCL1 引脚：GPIO 19
+*/
+
 basicMPU6050<> imu;
 
 imuFilter fusion;
@@ -37,6 +49,6 @@ void imu_task(void *p_imu_task)
         Serial.print( " " );
         Serial.print( fusion.roll() );
         Serial.println();
-        vTaskDelay(100);
+        vTaskDelay(2);
     }
 }

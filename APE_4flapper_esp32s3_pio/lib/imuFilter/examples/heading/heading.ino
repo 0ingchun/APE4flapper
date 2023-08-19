@@ -10,7 +10,7 @@ basicMPU6050<> imu;
 imuFilter fusion;
 
 void setup() {
-  Serial.begin(38400);
+  Serial.begin(115200);
 
   // Calibrate imu
   imu.setup();

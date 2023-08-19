@@ -53,6 +53,11 @@ void setup()
         //最后一个参数至关重要，决定这个任务创建在哪个核上.PRO_CPU 为 0, APP_CPU 为 1,或者 tskNO_AFFINITY 允许任务在两者上运行.
         xTaskCreatePinnedToCore(led_task, "LedTask", 4096, NULL, 0, NULL, 0);
 
+        xTaskCreatePinnedToCore(wifi_mqtt_task, "WifiMqttTask", 4096, NULL, 1, NULL, 0);
+        xTaskCreatePinnedToCore(remote_control_task, "RemoteControlTask", 4096, NULL, 1, NULL, 0);
+
+        xTaskCreatePinnedToCore(version_task, "VersionTask", 4096, NULL, 1, NULL, 0);
+
         xTaskCreatePinnedToCore(imu_task, "ImuTask", 4096, NULL, -1, NULL, 0);
 
         xTaskCreatePinnedToCore(fly_control_task, "FlyControlTask", 4096, NULL, -1, NULL, 1);
